@@ -6,8 +6,14 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:41:51 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 09:41:57 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/20 14:01:47 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "checker.h"
 
+int	main(int argc, char **argv)
+{
+	error_check(argc, argv);
+	return (0);
+}

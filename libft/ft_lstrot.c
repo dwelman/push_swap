@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstrot.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/20 13:04:47 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 13:25:04 by daviwel          ###   ########.fr       */
+/*   Created: 2016/06/20 16:36:52 by daviwel           #+#    #+#             */
+/*   Updated: 2016/06/20 16:41:24 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_lstrot(t_list **first)
 {
-	char		*s1;
-	const char	*s2;
-	size_t		i;
+	t_list	*temp;
+	t_list	*crawl;
 
-	i = 0;
-	s1 = dst;
-	s2 = src;
-	while (i < n)
-	{
-		s1[i] = s2[i];
-		i++;
-	}
-	return (dst);
+	temp = ft_lstnew(ft_lstpop(first));
+	crawl = *first;
+	while (crawl->next != NULL)
+		crawl = crawl->next;
+	crawl->next = temp;
 }

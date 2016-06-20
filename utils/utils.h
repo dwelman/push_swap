@@ -6,11 +6,13 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 10:02:41 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 10:02:58 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/20 10:21:10 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
+
+# include "../libft/libft.h"
 
 #endif

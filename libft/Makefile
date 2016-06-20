@@ -1,4 +1,4 @@
- # **************************************************************************** #
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/11 13:05:40 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/03 09:14:20 by daviwel          ###   ########.fr        #
+#    Updated: 2016/06/20 16:36:37 by daviwel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c get_next_line.c \
 		ft_getflags.c ft_padfunc.c ft_padfuncch.c ft_padfuncwide.c \
-		ft_printf.c ft_printfaux.c
+		ft_printf.c ft_printfaux.c ft_putstrwide.c ft_strlenwide.c \
+		ft_lstnew.c ft_lstswap.c ft_lstpop.c ft_lstpush.c ft_lstrot.c \
+		ft_lstrotrev.c
 
 OBJECTS = $(FILES:.c=.o)
 

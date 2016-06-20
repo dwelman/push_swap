@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/20 13:04:47 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 13:25:04 by daviwel          ###   ########.fr       */
+/*   Created: 2016/06/20 13:56:05 by daviwel           #+#    #+#             */
+/*   Updated: 2016/06/20 14:45:58 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_lstpop(t_list **first)
 {
-	char		*s1;
-	const char	*s2;
-	size_t		i;
+	t_list	*crawl;
+	void	*temp;
 
-	i = 0;
-	s1 = dst;
-	s2 = src;
-	while (i < n)
+	temp = NULL;
+	crawl = *first;
+	if (crawl != NULL)
 	{
-		s1[i] = s2[i];
-		i++;
+		*first = crawl->next;
+		temp = crawl->data;
+		free(crawl);
 	}
-	return (dst);
+	return (temp);
 }

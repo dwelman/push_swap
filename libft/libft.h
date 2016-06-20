@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 09:14:36 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/03 09:18:30 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/20 16:42:15 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,24 @@ typedef struct	s_flags
 	char	pad;
 	int		wide;
 }				t_flags;
+
+typedef struct	s_list
+{
+	void			*data;
+	struct s_list	*next;
+}				t_list;
+
+void			ft_lstrot(t_list **first);
+
+void			ft_lstrotrev(t_list **first);
+
+void			ft_lstpush(t_list **first, t_list *new_node);
+
+void			*ft_lstpop(t_list **first);
+
+void			ft_lstswap(t_list *first);
+
+t_list			*ft_lstnew(void *data);
 
 int				ft_printf(const char *format_str, ...);
 
@@ -165,7 +183,7 @@ int				ft_putchar(char c);
 
 int				ft_putstr(char const *s);
 
-void			ft_putstrwide(const wchar_t *c);
+void			ft_putstrwide(wchar_t *c);
 
 void			ft_putendl(char const *s);
 

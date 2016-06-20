@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstswap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/20 13:04:47 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 13:25:04 by daviwel          ###   ########.fr       */
+/*   Created: 2016/06/20 13:37:03 by daviwel           #+#    #+#             */
+/*   Updated: 2016/06/20 14:07:10 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_lstswap(t_list *first)
 {
-	char		*s1;
-	const char	*s2;
-	size_t		i;
+	void	*temp;
 
-	i = 0;
-	s1 = dst;
-	s2 = src;
-	while (i < n)
+	if (first->next != NULL)
 	{
-		s1[i] = s2[i];
-		i++;
+		temp = first->data;
+		first->data = first->next->data;
+		first->next->data = temp;
 	}
-	return (dst);
 }

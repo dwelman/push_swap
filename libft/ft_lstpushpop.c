@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpop.c                                        :+:      :+:    :+:   */
+/*   ft_lstpushpop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/20 13:56:05 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 07:58:30 by daviwel          ###   ########.fr       */
+/*   Created: 2016/06/21 08:00:23 by daviwel           #+#    #+#             */
+/*   Updated: 2016/06/21 08:35:35 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_lstpop(t_list **first)
+void	ft_lstpushpop(t_list **a, t_list **b)
 {
-	t_list	*crawl;
-	void	*temp;
+	t_list	*link;
+	void	*data;
 
-	temp = NULL;
-	crawl = *first;
-	if (crawl != NULL)
-	{
-		*first = crawl->next;
-		temp = crawl->data;
-		free(crawl);
-	}
-	return (temp);
+	data = ft_lstpop(a);
+	link = ft_lstnew(data);
+	ft_lstpush(b, link);
 }

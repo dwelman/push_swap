@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 09:14:36 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 16:42:15 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 08:35:39 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct	s_list
 	void			*data;
 	struct s_list	*next;
 }				t_list;
+
+void			ft_lstpushpop(t_list **a, t_list **b);
 
 void			ft_lstrot(t_list **first);
 

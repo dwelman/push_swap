@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 07:52:30 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 11:56:28 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 12:17:44 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		store_stack(t_list **list, int argc, char **argv)
 	int	*num;
 	int	elem;
 
-	elem = 0;
+	elem = 1;
 	if (argc > 1)
 	{
 		num = (int*)malloc(sizeof(int));

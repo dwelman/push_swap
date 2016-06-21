@@ -6,42 +6,57 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 14:20:27 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 09:25:25 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 10:44:50 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		parse_instruction(char *line)
+int		parse_instruction(char *line, t_info *info)
 {
 	if (ft_strcmp(line, "sa") == 0)
-		ft_lstswap(*a);
+		ft_lstswap(info->a);
 	else if (ft_strcmp(line, "sb") == 0)
-		printf("instruction sb found\n");
+		ft_lstswap(info->b);
 	else if (ft_strcmp(line, "ss") == 0)
-		printf("instruction ss	found\n");	
+	{
+		ft_lstswap(info->a);
+		ft_lstswap(info->b);
+	}
 	else if (ft_strcmp(line, "pa") == 0)
-		printf("instruction pa found\n");
+	{
+		ft_lstpushpop(&(info->a), &(info->b));
+		inc_elems(info, 0);
+	}
 	else if (ft_strcmp(line, "pb") == 0)
-		printf("instruction pb found\n");
+	{
+		ft_lstpushpop(&(info->b), &(info->a));
+		inc_elems(info, 1);
+	}
 	else if (ft_strcmp(line, "ra") == 0)
-		printf("instruction ra found\n");
+		ft_lstrot(&(info->a), info->elem_a);
 	else if (ft_strcmp(line, "rb") == 0)
-		printf("instruction rb found\n");
+		ft_lstrot(&(info->b), info->elem_b);
 	else if (ft_strcmp(line, "rr") == 0)
-		printf("instruction rr found\n");
+	{
+		ft_lstrot(&(info->a), info->elem_a);
+		ft_lstrot(&(info->b), info->elem_b);
+	}
 	else if (ft_strcmp(line, "rra") == 0)
-		printf("instruction rra found\n");
+		ft_lstrotrev(&(info->a), info->elem_a);
 	else if (ft_strcmp(line, "rrb") == 0)
-		printf("instruction rrb found\n");
+		ft_lstrotrev(&(info->b), info->elem_b);
 	else if (ft_strcmp(line, "rrr") == 0)
-		printf("instruction rrr found\n");
+	{
+		ft_lstrotrev(&(info->a), info->elem_a);
+		ft_lstrotrev(&(info->b), info->elem_b);
+	}
 	else
 		return (-1);
 	return (1);
 }
 
-int		get_next_instruction(t_list **a, t_list **b)
+int		get_next_instruction(t_info *info)
 {
 	char	*line;
 	int		ret;
@@ -50,7 +65,7 @@ int		get_next_instruction(t_list **a, t_list **b)
 	get_next_line(1, &line);
 	if (line != NULL)
 	{
-		ret = parse_instruction(line);
+		ret = parse_instruction(line, info);
 		free(line);
 	}
 	return (ret);

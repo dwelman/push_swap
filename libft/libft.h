@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 09:14:36 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 08:35:39 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 10:23:10 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ typedef struct	s_list
 
 void			ft_lstpushpop(t_list **a, t_list **b);
 
-void			ft_lstrot(t_list **first);
+void			ft_lstrot(t_list **first, int num);
 
-void			ft_lstrotrev(t_list **first);
+void			ft_lstrotrev(t_list **first, int num);
 
 void			ft_lstpush(t_list **first, t_list *new_node);
 

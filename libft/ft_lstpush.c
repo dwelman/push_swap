@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 14:44:23 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 14:48:56 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 09:49:27 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_lstpush(t_list **first, t_list *new_node)
 {
-	new_node->next = *first;
-	*first = new_node;
+	if (new_node != NULL)
+	{
+		new_node->next = *first;
+		*first = new_node;
+	}
 }

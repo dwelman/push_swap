@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstrot.c                                        :+:      :+:    :+:   */
+/*   inc_elems.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/20 16:36:52 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 10:18:18 by daviwel          ###   ########.fr       */
+/*   Created: 2016/06/21 10:32:22 by daviwel           #+#    #+#             */
+/*   Updated: 2016/06/21 10:36:10 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "utils.h"
 
-void	ft_lstrot(t_list **first, int num)
+void	inc_elems(t_info *info, int order)
 {
-	t_list	*temp;
-	t_list	*crawl;
-
-	temp = NULL;
-	crawl = NULL;
-	if (num > 1)
-		if (first != NULL)
-		{
-			temp = ft_lstnew(ft_lstpop(first));
-			crawl = *first;
-			if (crawl != NULL && crawl->next != NULL)
-			{
-				while (crawl->next != NULL)
-					crawl = crawl->next;
-			}
-			crawl->next = temp;
-		}
+	if (order == 0)
+	{
+		if (info->elem_a > 0)
+			info->elem_a--;
+		if (info->elem_b < info->max)
+			info->elem_b++;
+	}
+	if (order == 1)
+	{
+		if (info->elem_b > 0)
+			info->elem_b--;
+		if (info->elem_a < info->max)
+			info->elem_a++;
+	}
 }

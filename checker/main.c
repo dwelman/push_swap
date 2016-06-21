@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:41:51 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 10:40:15 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 12:13:52 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,11 @@ int	main(int argc, char **argv)
 	info.b = (t_list *)malloc(sizeof(t_list));
 	info.b = NULL;
 	info.elem_b = 0;
+	get_next_instruction(&info);
 	print_list(info.a);
 	ft_printf("| a\n");
 	print_list(info.b);
 	ft_printf("| b\n");
-	//print_list(info.a);
-	while (get_next_instruction(&info) != -1)
-	{
-		print_list(info.a);
-		ft_printf("| a\n");
-		print_list(info.b);
-		ft_printf("| b\n");
-	}
+	validate(&info);
 	return (0);
 }

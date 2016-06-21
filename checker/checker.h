@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 12:17:20 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 12:31:36 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct	s_info
 	t_list			*steps;
 	int				elem_steps;
 }				t_info;
+
+int				validate(t_info *info);
 
 int				get_next_instruction(t_info *info);
 

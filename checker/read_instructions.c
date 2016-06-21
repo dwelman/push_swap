@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 14:20:27 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 10:44:50 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 11:38:45 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,13 @@ int		get_next_instruction(t_info *info)
 	int		ret;
 
 	ret = 0;
-	get_next_line(1, &line);
-	if (line != NULL)
+	while (get_next_line(0, &line) == 1)
 	{
-		ret = parse_instruction(line, info);
-		free(line);
+		if (line != NULL)
+		{
+			ret = parse_instruction(line, info);
+			free(line);
+		}
 	}
 	return (ret);
 }

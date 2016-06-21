@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 15:00:10 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 10:23:31 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 16:29:29 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,21 @@
 void	ft_lstrotrev(t_list **first, int num)
 {
 	t_list	*crawl;
-	t_list	*cur;
+	t_list	*temp;
 
-	if (num)
-		crawl = NULL;
-	crawl = *first;
-	crawl = crawl->next;
-	cur = crawl;
-	while (crawl->next != NULL)
-		crawl = crawl->next;
-	crawl->next = *first;
-	*first = cur->next;
-	cur->next = NULL;
+	temp = NULL;
+	crawl = NULL;
+	if (num > 1)
+	{
+		if (first != NULL)
+		{
+			crawl = *first;
+			while (crawl->next->next != NULL)
+				crawl = crawl->next;
+			temp = crawl->next;
+			crawl->next = NULL;
+			temp->next = *first;
+			*first = temp;
+		}
+	}
 }

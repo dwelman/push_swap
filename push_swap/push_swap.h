@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 09:45:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 10:16:38 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 11:39:49 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 # include "../libft/libft.h"
 # include "../utils/utils.h"
 
-typedef struct		s_info
-{
-	t_list	*a;
-	t_list	*b;
-	int		elem_a;
-	int		elem_b;
-}					t_info;
+void	dumb_sort(t_info *info);
 
 #endif

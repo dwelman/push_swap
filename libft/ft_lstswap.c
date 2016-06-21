@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 13:37:03 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 14:07:10 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 09:48:06 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	ft_lstswap(t_list *first)
 {
 	void	*temp;
 
-	if (first->next != NULL)
-	{
-		temp = first->data;
-		first->data = first->next->data;
-		first->next->data = temp;
-	}
+	if (first != NULL)
+		if (first->next != NULL)
+		{
+			temp = first->data;
+			first->data = first->next->data;
+			first->next->data = temp;
+		}
 }

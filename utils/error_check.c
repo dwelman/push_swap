@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:41:47 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 08:34:56 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 11:56:08 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "../checker/checker.h"
 
 void			error_print(void)
 {

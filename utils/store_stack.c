@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 07:52:30 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 08:43:34 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 11:56:28 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "../checker/checker.h"
 
 int		store_stack(t_list **list, int argc, char **argv)
 {

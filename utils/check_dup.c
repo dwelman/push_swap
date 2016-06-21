@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 08:56:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 09:11:38 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 11:55:58 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "../checker/checker.h"
 
 void	check_dup(t_list *list)
 {

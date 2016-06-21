@@ -6,11 +6,11 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 10:32:22 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 10:36:10 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/21 11:56:19 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "../checker/checker.h"
 
 void	inc_elems(t_info *info, int order)
 {

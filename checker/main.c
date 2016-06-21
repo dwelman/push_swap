@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:41:51 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 17:16:01 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 08:37:59 by ddu-toit         ###   ########.fr       */
 /*   Updated: 2016/06/20 16:00:02 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -15,28 +15,20 @@
 
 void	print_list(t_list *list)
 {
+	int	*num;
 	while (list != NULL)
 	{
-		ft_printf("%d\n", list->data);
+		num = list->data;
+		ft_printf("%d\n", *num);
 		list = list->next;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	t_list	*first;
-	t_list	*link;
-	t_list	*temp;
+	t_info	info;
 
 	error_check(argc, argv);
-	first = ft_lstnew((void *)42);
-	link = ft_lstnew((void *)5);
-	temp = ft_lstnew((void *)36);
-	first->next = link;
-	ft_lstpush(&first, temp);
-	print_list(first);
-	ft_printf("\n");
-	ft_lstrotrev(&first);
-	ft_lstrotrev(&first);
-	print_list(first);
+	info.elem_a = store_stack(&info.a, argc, argv);
+	print_list(info.a);
 }

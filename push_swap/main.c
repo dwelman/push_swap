@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 07:43:15 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 12:26:46 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 13:50:32 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,42 @@
 void	print_stacks(t_info *info)
 {
 	int i;
+	t_list	*trav_a;
+	t_list	*trav_b;
 
-	i = 0;
-	while (i < info->max)
+	i = -1;
+	trav_a = info->a;
+	trav_b = info->b;
+	while (++i < info->max)
 	{
-		if (info->a)
+		if (trav_a)
 		{
-			printf(" %d",*(int*)info->a->data);
-			info->a = info->a->next;
+			ft_putchar(' ');
+			ft_putnbr(*(int*)trav_a->data);
+			trav_a = trav_a->next;
 		}
 		ft_putchar('\t');
-		if (info->b)
+		if (trav_b)
 		{
-			printf("derp %d",*(int*)info->b->data);
-			info->b = info->b->next;
+			ft_putchar(' ');
+			ft_putnbr(*(int*)trav_b->data);
+			trav_b = trav_b->next;
 		}
 		ft_putchar('\n');
-		i++;
 	}
 	ft_printf("___\t___\n a \t b\n");
+}
+
+void	print_steps(t_info *info)
+{
+	t_list	*trav;
+
+	trav = info->steps;
+	while (trav)
+	{
+		ft_printf("%s\n", (char*)info->steps->data);
+		trav = trav->next;
+	}
 }
 
 void	init_info(t_info *info)
@@ -47,16 +64,12 @@ int		main(int argc, char **argv)
 {
 	t_info	info;
 
+	init_info(&info);
 	error_check(argc, argv);
 	info.elem_a = store_stack(&info.a, argc, argv);
 	info.max = info.elem_a;
 	check_dup(info.a);
-	t_list *trav = info.a;
-	while (trav)
-	{
-		printf("%d\n", *(int*)trav->data);
-		trav = trav->next;
-	}
 	dumb_sort(&info);
+	print_steps(&info);
 	return (0);
 }

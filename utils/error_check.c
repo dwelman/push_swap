@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:41:47 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 11:56:08 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 13:15:30 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void			error_check(int argc, char **argv)
 	int	i;
 
 	i = 1;
+	if (argc < 2)
+		error_print();
 	while (i < argc)
 	{
 		if (is_numeric(argv[i]) == 0)

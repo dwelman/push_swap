@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 11:37:59 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/21 11:50:16 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CHECKER_H
 
 # include "../libft/libft.h"
-# include "../utils/utils.h"
 
 typedef struct	s_info
 {
@@ -31,5 +30,15 @@ typedef struct	s_info
 int				get_next_instruction(t_info *info);
 
 void			inc_elems(t_info *info, int order);
+
+void			error_check(int argc, char **argv);
+
+int				check_int(char *arg);
+
+void			error_print(void);
+
+int				store_stack(t_list **list, int argc, char **argv);
+
+void			check_dup(t_list *list);
 
 #endif

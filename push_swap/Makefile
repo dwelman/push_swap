@@ -6,16 +6,17 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/20 09:38:38 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/21 12:18:55 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/06/22 15:03:27 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC = main.c ../utils/store_stack.c ../utils/error_check.c ../utils/check_dup.c\
-	  sort.c ../utils/inc_elems.c
+	  sort.c ../utils/inc_elems.c ../utils/ft_lstappend.c output.c
 
-OBJ = main.o store_stack.o error_check.o check_dup.o sort.o inc_elems.o
+OBJ = main.o store_stack.o error_check.o check_dup.o sort.o inc_elems.o\
+	  ft_lstappend.o output.o
 
 CFLAG = -Wall -Werror -Wextra
 

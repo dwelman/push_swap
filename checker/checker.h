@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/22 15:05:27 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/22 15:13:50 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int				store_stack(t_list **list, int argc, char **argv);
 void			check_dup(t_list *list);
 
 void			print_stacks(t_info *info);
+
+void			print_steps(t_info *info);
 
 #endif

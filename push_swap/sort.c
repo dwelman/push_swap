@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 13:50:34 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/22 15:06:08 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	dumb_sort(t_info *info)
 		while (*(int*)info->a->data != smallest(info->a))
 		{
 			ft_lstrot(&info->a, info->max);
-			ft_lstpush(&info->steps, ft_lstnew("ra"));	
+			ft_lstappend(&info->steps, ft_lstnew("ra"));	
 		}
 		ft_lstpushpop(&info->a, &info->b);
-		ft_lstpush(&info->steps, ft_lstnew("pa"));
+		ft_lstappend(&info->steps, ft_lstnew("pa"));
 		inc_elems(info, 0);
 	}
 	while (info->b && info->elem_b)
 	{
 		ft_lstpushpop(&info->b, &info->a);
-		ft_lstpush(&info->steps, ft_lstnew("pb"));
+		ft_lstappend(&info->steps, ft_lstnew("pb"));
 		inc_elems(info, 1);
 	}
 }

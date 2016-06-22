@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:53:38 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 12:23:15 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/22 15:04:14 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	validate(t_info *info)
 {
 	int		i;
 	t_list	*crawl;
-	
+
 	i = 0;
 	crawl = info->a;
 	while (crawl != NULL)

@@ -6,11 +6,34 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 14:20:27 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 13:51:04 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/22 15:11:55 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+int		cont_parse(char *line, t_info *info)
+{
+	if (ft_strcmp(line, "rr") == 0)
+	{
+		ft_lstrot(&(info->a), info->elem_a);
+		ft_lstrot(&(info->b), info->elem_b);
+	}
+	else if (ft_strcmp(line, "rra") == 0)
+		ft_lstrotrev(&(info->a), info->elem_a);
+	else if (ft_strcmp(line, "rrb") == 0)
+		ft_lstrotrev(&(info->b), info->elem_b);
+	else if (ft_strcmp(line, "rrr") == 0)
+	{
+		ft_lstrotrev(&(info->a), info->elem_a);
+		ft_lstrotrev(&(info->b), info->elem_b);
+	}
+	else if (ft_strcmp(line, "rb") == 0)
+		ft_lstrot(&(info->b), info->elem_b);
+	else
+		return (-1);
+	return (1);
+}
 
 int		parse_instruction(char *line, t_info *info)
 {
@@ -35,24 +58,8 @@ int		parse_instruction(char *line, t_info *info)
 	}
 	else if (ft_strcmp(line, "ra") == 0)
 		ft_lstrot(&(info->a), info->elem_a);
-	else if (ft_strcmp(line, "rb") == 0)
-		ft_lstrot(&(info->b), info->elem_b);
-	else if (ft_strcmp(line, "rr") == 0)
-	{
-		ft_lstrot(&(info->a), info->elem_a);
-		ft_lstrot(&(info->b), info->elem_b);
-	}
-	else if (ft_strcmp(line, "rra") == 0)
-		ft_lstrotrev(&(info->a), info->elem_a);
-	else if (ft_strcmp(line, "rrb") == 0)
-		ft_lstrotrev(&(info->b), info->elem_b);
-	else if (ft_strcmp(line, "rrr") == 0)
-	{
-		ft_lstrotrev(&(info->a), info->elem_a);
-		ft_lstrotrev(&(info->b), info->elem_b);
-	}
 	else
-		return (-1);
+		return (cont_parse(line, info));
 	return (1);
 }
 

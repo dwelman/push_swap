@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:41:51 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 12:13:52 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/22 15:04:59 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	print_list(t_list *list)
 {
 	int	*num;
+
 	while (list != NULL)
 	{
 		num = list->data;
@@ -23,7 +24,7 @@ void	print_list(t_list *list)
 	}
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_info	info;
 

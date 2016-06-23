@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/23 07:36:12 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/23 08:42:40 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,48 @@ int		smallest(t_list *list, int *pos)
 void	dumb_sort(t_info *info)
 {
 	int	pos;
+
 	while (info->a && info->elem_a)
 	{
-		while (*(int*)info->a->data != smallest(info->a, &pos))
+		if (check_stack(info) == 0)
 		{
-			if (info->max / 2 - pos  >= 0)
+			if (*(int*)info->a->data > *(int*)info->a->next->data)
 			{
-				ft_lstrot(&info->a, info->max);
-				ft_lstappend(&info->steps, ft_lstnew("ra"));
-			}		
-			else
+				ft_lstswap(info->a);
+				ft_lstappend(&info->steps, ft_lstnew("sa"));
+			}
+			else if (*(int*)info->a->next->data == smallest(info->a, &pos))
 			{
-				ft_lstrotrev(&info->a, info->max);
-				ft_lstappend(&info->steps, ft_lstnew("rra"));
+				ft_lstswap(info->a);
+				ft_lstappend(&info->steps, ft_lstnew("sa"));
+			}
+			if (check_stack(info) == 0)
+			{
+				while (*(int*)info->a->data != smallest(info->a, &pos))
+				{
+					if (info->max / 2 - pos  >= 0)
+					{
+						ft_lstrot(&info->a, info->max);
+						ft_lstappend(&info->steps, ft_lstnew("ra"));
+					}		
+					else
+					{
+						ft_lstrotrev(&info->a, info->max);
+						ft_lstappend(&info->steps, ft_lstnew("rra"));
+					}
+					print_stacks(info);
+				}
+			}
+			if (check_stack(info) == 0)
+			{
+				ft_lstpushpop(&info->a, &info->b);
+				ft_lstappend(&info->steps, ft_lstnew("pa"));
+				inc_elems(info, 0);
+				print_stacks(info);
 			}
 		}
-		ft_lstpushpop(&info->a, &info->b);
-		ft_lstappend(&info->steps, ft_lstnew("pa"));
-		inc_elems(info, 0);
+		else
+			break;
 	}
 	while (info->b && info->elem_b)
 	{
@@ -60,5 +84,5 @@ void	dumb_sort(t_info *info)
 		ft_lstappend(&info->steps, ft_lstnew("pb"));
 		inc_elems(info, 1);
 	}
+	print_stacks(info);
 }
-

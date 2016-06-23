@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/23 09:57:34 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/23 11:15:54 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct	s_info
 }				t_info;
 
 int				check_stack(t_info *info);
+
+int				check_stack_desc(t_info *info);
 
 void			ft_lstappend(t_list **list, t_list *node);
 

@@ -6,24 +6,26 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 13:56:05 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 07:58:30 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/23 12:04:44 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_lstpop(t_list **first)
+t_list	*ft_lstpop(t_list **first)
 {
+	t_list	*temp;
 	t_list	*crawl;
-	void	*temp;
 
-	temp = NULL;
+	temp = *first;
 	crawl = *first;
-	if (crawl != NULL)
+	if (crawl->next != NULL)
 	{
-		*first = crawl->next;
-		temp = crawl->data;
-		free(crawl);
+		crawl = crawl->next;
+		*first = crawl;
 	}
+	else
+		*first = NULL;
+	temp->next = NULL;
 	return (temp);
 }

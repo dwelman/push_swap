@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 16:36:52 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 13:09:43 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/23 11:49:40 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_lstrot(t_list **first, int num)
 	if (num > 1)
 		if (first != NULL)
 		{
-			temp = ft_lstnew(ft_lstpop(first));
+			temp = ft_lstpop(first);
 			crawl = *first;
 			if (crawl != NULL && crawl->next != NULL)
 			{

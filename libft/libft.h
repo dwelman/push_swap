@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 09:14:36 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/23 11:39:45 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/23 11:45:04 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void			ft_lstrotrev(t_list **first, int num);
 
 void			ft_lstpush(t_list **first, t_list *new_node);
 
-void			*ft_lstpop(t_list **first);
+t_list			*ft_lstpop(t_list **first);
 
 void			ft_lstswap(t_list *first);
 

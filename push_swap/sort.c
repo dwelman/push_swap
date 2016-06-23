@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/23 08:42:40 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/23 10:15:01 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,18 @@ void	dumb_sort(t_info *info)
 	{
 		if (check_stack(info) == 0)
 		{
-			if (*(int*)info->a->data > *(int*)info->a->next->data)
+			/*if (*(int*)info->a->data < *(int*)info->a->next->data && *(int*)info->a->next->data <= info->median)
+			{
+				ft_lstswap(info->a);
+				ft_lstappend(&info->steps, ft_lstnew("sa"));
+			}*/
+			if (*(int*)info->a->data <= info->median)
+			{
+				ft_lstpushpop(&info->a, &info->b);
+				ft_lstappend(&info->steps, ft_lstnew("pa"));
+				inc_elems(info, 0);
+			}
+			else if (*(int*)info->a->data > *(int*)info->a->next->data)
 			{
 				ft_lstswap(info->a);
 				ft_lstappend(&info->steps, ft_lstnew("sa"));

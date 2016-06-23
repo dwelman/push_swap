@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/22 15:27:04 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/22 16:41:54 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ void			check_dup(t_list *list);
 void			print_stacks(t_info *info);
 
 void			print_steps(t_info *info);
+
+void			dumb_sort(t_info *info);
+
+void			sort_stack(t_list **start, t_info *info);
 
 #endif

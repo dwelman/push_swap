@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 09:45:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/21 11:51:36 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/23 13:44:53 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 # include "../checker/checker.h"
 
 void	dumb_sort(t_info *info);
+
+void	get_optimal(t_info *info, int *arr);
 
 #endif

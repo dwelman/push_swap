@@ -6,11 +6,11 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 07:43:15 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/22 15:00:07 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/23 07:34:56 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../checker/checker.h"
 
 void	init_info(t_info *info)
 {
@@ -28,6 +28,8 @@ int		main(int argc, char **argv)
 	info.elem_a = store_stack(&info.a, argc, argv);
 	info.max = info.elem_a;
 	check_dup(info.a);
+	print_stacks(&info);
+//	sort_stack(&info.a, &info);
 	dumb_sort(&info);
 	print_steps(&info);
 	return (0);

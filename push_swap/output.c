@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 14:44:52 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/22 15:09:41 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/22 17:01:03 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,11 @@ void	print_steps(t_info *info)
 	trav = info->steps;
 	while (trav)
 	{
-		if (collapse_step(trav))
+		if (trav->next && collapse_step(trav))
 			trav = trav->next;
 		else
 			ft_printf("%s\n", (char*)trav->data);
-		trav = trav->next;
+		if (trav)
+			trav = trav->next;
 	}
 }

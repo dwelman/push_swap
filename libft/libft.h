@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 09:14:36 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/21 10:23:10 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/23 11:39:45 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_flags
 typedef struct	s_list
 {
 	void			*data;
+	int				op_pos;
 	struct s_list	*next;
 }				t_list;
 

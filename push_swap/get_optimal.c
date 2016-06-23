@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 13:21:01 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/23 13:32:26 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/23 13:53:23 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	get_optimal(t_info *info, int *arr)
 {
 	int		i;
-	t_info	*crawl;
+	t_list	*crawl;
 
 	crawl = info->a;
 	while (crawl != NULL)

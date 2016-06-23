@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/23 13:47:09 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/23 15:11:50 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,11 @@ void			dumb_sort(t_info *info);
 void			sort_stack(t_list **start, t_info *info);
 
 int				median(t_info *info);
+
+int				calc_moves_to_op(int opt, int cur, t_info *info);
+
+int				get_curpos(t_list *list, t_list *node);
+
+int				calc_total_sortdiff(t_info *info);
 
 #endif

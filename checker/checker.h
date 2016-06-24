@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 12:45:39 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/24 16:54:18 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,16 @@ typedef struct	s_info
 	int				elem_steps;
 	int				median;
 	int				old_diff;
+	int				choice_i;
+	int				choice_diff;
 	t_diff			*diffs;
 }				t_info;
 
-void			do_best(t_info *info, int i);
+void			roll_back_moves(t_info *info, t_list *move_buffer);
 
-void			get_best(t_info *info);
+void			do_best(t_info *info, int i, int save);
+
+int				get_best(t_info *info);
 
 void			get_optimal(t_info *info, int *arr);
 
@@ -58,6 +62,8 @@ int				check_stack(t_info *info);
 int				check_stack_desc(t_info *info);
 
 void			ft_lstappend(t_list **list, t_list *node);
+
+void			ft_lstdel(t_list *start);
 
 int				validate(t_info *info);
 

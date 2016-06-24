@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 14:08:38 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/24 16:50:45 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,86 +58,45 @@ void	do_tests(t_info *info)
     ft_printf("pb = %d\n", info->diffs->pb);
 }
 
+int		try_next(t_info *info, int moves)
+{
+	t_list	*move_buffer;
+	int		i;
+	int		*b_index;
+	int		first_move;
+
+	i = 0;
+	while (i < moves && i < info->max)
+	{	
+		do_tests(info);
+		b_index = (int*)malloc(sizeof(int));
+		*b_index =  get_best(info);
+		ft_lstpush(&move_buffer, ft_lstnew(b_index));
+		if (i == 0)
+			first_move = *b_index;
+		do_best(info, *b_index, 0);
+		i++;
+	}
+	if (info->choice_diff > calc_total_sortdiff(info) || info->elem_steps == moves)
+	{
+		info->choice_i = first_move;
+		info->choice_diff = calc_total_sortdiff(info);
+	}
+	roll_back_moves(info, move_buffer);
+	return (first_move);
+}
+
 void	sort_stacks(t_info *info)
 {
 	ft_strcpy(info->diffs->last_a,"qq");
 	ft_strcpy(info->diffs->last_b,"qq");
-	ft_printf("sortdif = %d\n", calc_total_sortdiff(info));
-	while (1)
+	info->choice_diff = calc_total_sortdiff(info);
+	while (calc_total_sortdiff(info) != 0)
 	{
 		ft_printf("last move a : %s\n", info->diffs->last_a);
 		ft_printf("last move b : %s\n", info->diffs->last_b);
 		do_tests(info);
-		get_best(info);
+		do_best(info, get_best(info), 1);
 		print_stacks(info);
-		ft_printf("elem a = %d\n max = %d\n", info->elem_a, info->max);
-		if ((check_stack(info) == 1) && (info->elem_a == info->max))
-			break ;
 	}
-}
-
-void	dumb_sort(t_info *info)
-{
-	int	pos;
-
-	while (info->a && info->elem_a)
-	{
-		if (check_stack(info) == 0)
-		{
-			/*if (*(int*)info->a->data < *(int*)info->a->next->data && *(int*)info->a->next->data <= info->median)
-			{
-				ft_lstswap(info->a);
-				ft_lstappend(&info->steps, ft_lstnew("sa"));
-			}*/
-			if (*(int*)info->a->data <= info->median)
-			{
-				ft_lstpushpop(&info->a, &info->b);
-				ft_lstappend(&info->steps, ft_lstnew("pa"));
-				inc_elems(info, 0);
-			}
-			else if (*(int*)info->a->data > *(int*)info->a->next->data)
-			{
-				ft_lstswap(info->a);
-				ft_lstappend(&info->steps, ft_lstnew("sa"));
-			}
-			else if (*(int*)info->a->next->data == smallest(info->a, &pos))
-			{
-				ft_lstswap(info->a);
-				ft_lstappend(&info->steps, ft_lstnew("sa"));
-			}
-			if (check_stack(info) == 0)
-			{
-				while (*(int*)info->a->data != smallest(info->a, &pos))
-				{
-					if (info->max / 2 - pos  >= 0)
-					{
-						ft_lstrot(&info->a, info->max);
-						ft_lstappend(&info->steps, ft_lstnew("ra"));
-					}		
-					else
-					{
-						ft_lstrotrev(&info->a, info->max);
-						ft_lstappend(&info->steps, ft_lstnew("rra"));
-					}
-					print_stacks(info);
-				}
-			}
-			if (check_stack(info) == 0)
-			{
-				ft_lstpushpop(&info->a, &info->b);
-				ft_lstappend(&info->steps, ft_lstnew("pa"));
-				inc_elems(info, 0);
-				print_stacks(info);
-			}
-		}
-		else
-			break;
-	}
-	while (info->b && info->elem_b)
-	{
-		ft_lstpushpop(&info->b, &info->a);
-		ft_lstappend(&info->steps, ft_lstnew("pb"));
-		inc_elems(info, 1);
-	}
-	print_stacks(info);
 }

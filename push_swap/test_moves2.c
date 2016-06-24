@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 07:55:08 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 13:29:41 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/24 14:55:52 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 void	test_rb(t_info *info)
 {
 	if ((info->b && ft_strcmp(info->diffs->last_b, "rrb") != 0)
-		&& info->elem_b > 1 && check_stack_desc(info) == 0)
+		&& info->elem_b > 1)
 	{
 		ft_lstrot(&info->b, info->elem_b);
 		info->diffs->rb = calc_total_sortdiff(info);
+		info->diffs->rb -= info->elem_b;
 		ft_lstrotrev(&info->b, info->elem_b);
 	}
 	else
@@ -28,10 +29,11 @@ void	test_rb(t_info *info)
 void	test_rrb(t_info *info)
 {
 	if ((info->b && ft_strcmp(info->diffs->last_b, "rb") != 0)
-		&& info->elem_b > 1 && check_stack_desc(info) == 0)
+		&& info->elem_b > 1)
 	{
 		ft_lstrotrev(&info->b, info->elem_b);
 		info->diffs->rrb = calc_total_sortdiff(info);
+		info->diffs->rrb -= info->elem_b;
 		ft_lstrot(&info->b, info->elem_b);
 	}
 	else

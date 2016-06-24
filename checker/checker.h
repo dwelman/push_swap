@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 07:45:59 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/24 08:25:57 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 # define CHECKER_H
 
 # include "../libft/libft.h"
-
-/*
- * diffs:
- * 0 = swap
- * 1 = rotate up
- * 2 = rotate down
- * 3 = push
- */
 
 typedef struct	s_diff
 {
@@ -52,6 +44,10 @@ typedef struct	s_info
 	int				old_diff;
 	t_diff			*diffs;
 }				t_info;
+
+void			do_best(t_info *info, int i);
+
+void			get_best(t_info *info);
 
 void			get_optimal(t_info *info, int *arr);
 

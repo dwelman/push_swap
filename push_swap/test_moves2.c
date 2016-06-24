@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 07:55:08 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 10:36:37 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/24 13:29:41 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	test_rb(t_info *info)
 {
-	if (info->b && ft_strcmp(info->diffs->last, "rrb") != 0)
+	if ((info->b && ft_strcmp(info->diffs->last_b, "rrb") != 0)
+		&& info->elem_b > 1 && check_stack_desc(info) == 0)
 	{
-		ft_lstrot(&info->b, info->max);
+		ft_lstrot(&info->b, info->elem_b);
 		info->diffs->rb = calc_total_sortdiff(info);
-		ft_lstrotrev(&info->b, info->max);
-		ft_strcpy(info->diffs->last, "rb");
+		ft_lstrotrev(&info->b, info->elem_b);
 	}
 	else
 		info->diffs->rb = 2147483647;
@@ -27,12 +27,12 @@ void	test_rb(t_info *info)
 
 void	test_rrb(t_info *info)
 {
-	if (info->b && ft_strcmp(info->diffs->last, "rb") != 0)
+	if ((info->b && ft_strcmp(info->diffs->last_b, "rb") != 0)
+		&& info->elem_b > 1 && check_stack_desc(info) == 0)
 	{
-		ft_lstrotrev(&info->b, info->max);
+		ft_lstrotrev(&info->b, info->elem_b);
 		info->diffs->rrb = calc_total_sortdiff(info);
-		ft_lstrot(&info->b, info->max);
-		ft_strcpy(info->diffs->last, "rrb");
+		ft_lstrot(&info->b, info->elem_b);
 	}
 	else
 		info->diffs->rrb = 2147483647;
@@ -40,14 +40,15 @@ void	test_rrb(t_info *info)
 
 void	test_rrr(t_info *info)
 {
-	if (info->a && info->b && ft_strcmp(info->diffs->last, "rrr") != 0)
+	if ((info->a && info->b && ft_strcmp(info->diffs->last_a, "rrr") != 0)
+		&& (ft_strncmp(info->diffs->last_b, "r", 1) != 0)
+		&& (ft_strncmp(info->diffs->last_a, "r", 1) != 0))
 	{
-		ft_lstrotrev(&info->b, info->max);
-		ft_lstrotrev(&info->a, info->max);
+		ft_lstrotrev(&info->b, info->elem_b);
+		ft_lstrotrev(&info->a, info->elem_a);
 		info->diffs->rrr = calc_total_sortdiff(info);
-		ft_lstrot(&info->b, info->max);
-		ft_lstrot(&info->a, info->max);
-		ft_strcpy(info->diffs->last, "rrr");
+		ft_lstrot(&info->b, info->elem_b);
+		ft_lstrot(&info->a, info->elem_a);
 	}
 	else
 		info->diffs->rrr = 2147483647;
@@ -55,14 +56,15 @@ void	test_rrr(t_info *info)
 
 void	test_rr(t_info *info)
 {
-	if (info->a && info->b && ft_strcmp(info->diffs->last, "rr") != 0)
+	if ((info->a && info->b && ft_strcmp(info->diffs->last_a, "rr") != 0)
+		&& (ft_strcmp(info->diffs->last_b, "r") != 0)
+		&& (ft_strncmp(info->diffs->last_a, "r", 1) != 0))
 	{
-		ft_lstrot(&info->b, info->max);
-		ft_lstrot(&info->a, info->max);
+		ft_lstrot(&info->b, info->elem_b);
+		ft_lstrot(&info->a, info->elem_a);
 		info->diffs->rr = calc_total_sortdiff(info);
-		ft_lstrotrev(&info->b, info->max);
-		ft_lstrotrev(&info->a, info->max);
-		ft_strcpy(info->diffs->last, "rr");
+		ft_lstrotrev(&info->b, info->elem_b);
+		ft_lstrotrev(&info->a, info->elem_a);
 	}
 	else
 		info->diffs->rr = 2147483647;

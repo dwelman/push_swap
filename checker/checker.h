@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 10:39:35 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/24 12:45:39 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ typedef struct	s_diff
 	int			rrr;
 	int			pa;
 	int			pb;
-	char		last[4];
+	char		last_a[4];
+	char		last_b[4];
 }				t_diff;
 
 typedef struct	s_info

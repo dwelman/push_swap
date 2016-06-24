@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 13:39:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/24 14:08:38 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,16 @@ void	sort_stacks(t_info *info)
 	ft_strcpy(info->diffs->last_a,"qq");
 	ft_strcpy(info->diffs->last_b,"qq");
 	ft_printf("sortdif = %d\n", calc_total_sortdiff(info));
-	while (calc_total_sortdiff(info) != 0)
+	while (1)
 	{
 		ft_printf("last move a : %s\n", info->diffs->last_a);
 		ft_printf("last move b : %s\n", info->diffs->last_b);
 		do_tests(info);
 		get_best(info);
 		print_stacks(info);
+		ft_printf("elem a = %d\n max = %d\n", info->elem_a, info->max);
+		if ((check_stack(info) == 1) && (info->elem_a == info->max))
+			break ;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 09:00:18 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/24 10:07:59 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,29 @@ int				calc_moves_to_op(int opt, int cur, t_info *info);
 int				get_curpos(t_list *list, t_list *node);
 
 int				calc_total_sortdiff(t_info *info);
+
+void			test_sa(t_info *info);
+
+void			test_sb(t_info *info);
+
+void			test_ss(t_info *info);
+
+void			test_ra(t_info *info);
+
+void			test_rb(t_info *info);
+
+void			test_rr(t_info *info);
+
+void			test_rra(t_info *info);
+
+void			test_rrb(t_info *info);
+
+void			test_rrr(t_info *info);
+
+void			test_pa(t_info *info);
+
+void			test_pb(t_info *info);
+
+void			sort_stacks(t_info *info);
 
 #endif

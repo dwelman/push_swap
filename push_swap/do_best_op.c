@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 08:20:27 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/24 09:00:16 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/24 10:14:11 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	do_best_cont(t_info *info, int i)
 
 void	do_best(t_info *info, int i)
 {
+	ft_printf ("i = %d\n", i);
 	if (i == 1)
 	{
 		ft_lstswap(info->a);

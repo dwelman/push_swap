@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 14:44:52 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/22 17:01:03 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/24 09:37:52 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_stacks(t_info *info)
 			trav_a = trav_a->next;
 		}
 		ft_putchar('\t');
-		if (trav_b)
+		if (info->elem_b > 0)
 		{
 			ft_putchar(' ');
 			ft_putnbr(*(int*)trav_b->data);
@@ -39,6 +39,25 @@ void	print_stacks(t_info *info)
 		ft_putchar('\n');
 	}
 	ft_printf("___\t___\n a \t b\n");
+}
+
+int		collapse_step2(t_list *trav)
+{
+	if ((ft_strcmp("pa", (char*)trav->data) == 0) &&
+		(ft_strcmp("rra", (char*)trav->next->data) == 0) &&
+		(ft_strcmp("pb", (char*)trav->next->next->data) == 0))
+	{
+		ft_putendl("rra\nsa");
+		return (1);
+	}
+	if ((ft_strcmp("pa", (char*)trav->data) == 0) &&
+		(ft_strcmp("ra", (char*)trav->next->data) == 0) &&
+		(ft_strcmp("pb", (char*)trav->next->next->data) == 0))
+	{
+		ft_putendl("sa\nra");
+		return (1);
+	}
+	return (0);
 }
 
 int		collapse_step(t_list *trav)
@@ -79,6 +98,8 @@ void	print_steps(t_info *info)
 	{
 		if (trav->next && collapse_step(trav))
 			trav = trav->next;
+		else if ( trav->next && trav->next->next && collapse_step2(trav))
+			trav = trav->next->next;
 		else
 			ft_printf("%s\n", (char*)trav->data);
 		if (trav)

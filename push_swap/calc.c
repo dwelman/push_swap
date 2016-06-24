@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 09:09:19 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/23 16:44:24 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/24 09:14:54 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	median(t_info *info)
 			i++;
 		}	
 		sort_arr(list, info->max);
-		ft_printf("get opt\n");
 		get_optimal(info, list);
 		i = 0;
 		ret = list[info->max / 2];

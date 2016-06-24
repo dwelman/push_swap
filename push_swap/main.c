@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 07:43:15 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/23 16:44:23 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/24 09:00:10 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,22 @@ int		main(int argc, char **argv)
 		trav = trav->next;
 	}
 	print_stacks(&info);
-	ft_printf("total fuckedupness = %d\n", calc_total_sortdiff(&info));
-//	sort_stack(&info.a, &info);
-//	dumb_sort(&info);
-//	print_steps(&info);
+	ft_printf("total fuckedupness = %d\nindividual total fuckedupness with different moves\n", calc_total_sortdiff(&info));
+/*
+	test_sa(&info);
+	test_sb(&info);
+	test_ss(&info);
+	test_ra(&info);
+	test_rb(&info);
+	test_rr(&info);
+	test_rra(&info);
+	test_rrb(&info);
+	test_rrr(&info);
+	test_pa(&info);
+	test_pb(&info);
+	printf("sa = %d\n", info.diffs->sa);
+	printf("sb = %d\n", info.diffs->sb);
+	printf("ss = %d\n", info.diffs->ss);	
+	print_steps(&info);*/
 	return (0);
 }

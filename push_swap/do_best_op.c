@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 08:20:27 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/24 17:00:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 09:52:55 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,28 +120,33 @@ void	do_best(t_info *info, int i, int save)
 		do_best_cont(info, i, save);
 }
 
-void	add_move_to_buff(t_list *buff, int i)
+void	set_to_max(int *num)
+{
+	*num = 2147483647;
+}
+
+void	do_function(t_diff *diff, int i, void (f)(int *))
 {
 	if (i == 1)
-		ft_lstpush(&buff, ft_lstnew("sa"));
-	if (i == 2)
-		ft_lstpush(&buff, ft_lstnew("sb"));
+		f(&diff->sa);
+	else if (i == 2)
+		f(&diff->sb);
 	else if (i == 3)
-		ft_lstpush(&buff, ft_lstnew("ss"));
+		f(&diff->ss);
 	else if (i == 4)
-		ft_lstpush(&buff, ft_lstnew("ra"));
+		f(&diff->ra);
 	else if (i == 5)
-		ft_lstpush(&buff, ft_lstnew("rb"));
+		f(&diff->rb);
 	else if (i == 6)
-		ft_lstpush(&buff, ft_lstnew("rr"));
+		f(&diff->rr);
 	else if (i == 7)
-		ft_lstpush(&buff, ft_lstnew("rra"));
+		f(&diff->rra);
 	else if (i == 8)
-		ft_lstpush(&buff, ft_lstnew("rrb"));
+		f(&diff->rrb);
 	else if (i == 9)
-		ft_lstpush(&buff, ft_lstnew("rrr"));
+		f(&diff->rrr);
 	else if (i == 10)
-		ft_lstpush(&buff, ft_lstnew("pa"));
+		f(&diff->pa);
 	else if (i == 11)
-		ft_lstpush(&buff, ft_lstnew("pb"));
+		f(&diff->pb);
 }

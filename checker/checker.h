@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 16:54:18 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 09:48:30 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,13 @@ void			test_pa(t_info *info);
 void			test_pb(t_info *info);
 
 void			sort_stacks(t_info *info);
+
+void			do_function(t_diff *diff, int i, void (f)(int *));
+
+void			set_to_max(int *num);
+
+int				do_tests_check(t_info *info);
+
+void			rollback_sort(t_info *info);
 
 #endif

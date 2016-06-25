@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/25 11:20:32 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/25 15:39:43 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	do_tests(t_info *info)
 	test_rrr(info);
 	test_pa(info);
 	test_pb(info);
-	ft_printf("sa = %d\n", info->diffs->sa);
+/*	ft_printf("\nsa = %d\n", info->diffs->sa);
     ft_printf("sb = %d\n", info->diffs->sb);
     ft_printf("ss = %d\n", info->diffs->ss);
     ft_printf("ra = %d\n", info->diffs->ra);
@@ -55,35 +55,7 @@ void	do_tests(t_info *info)
     ft_printf("rrb = %d\n", info->diffs->rrb);
     ft_printf("rrr = %d\n", info->diffs->rrr);
     ft_printf("pb = %d\n", info->diffs->pa);
-    ft_printf("pa = %d\n", info->diffs->pb);
-}
-
-int		try_next(t_info *info, int moves)
-{
-	t_list	*move_buffer;
-	int		i;
-	int		*b_index;
-	int		first_move;
-
-	i = 0;
-	while (i < moves && i < info->max)
-	{	
-		do_tests(info);
-		b_index = (int*)malloc(sizeof(int));
-		*b_index =  get_best(info);
-		ft_lstpush(&move_buffer, ft_lstnew(b_index));
-		if (i == 0)
-			first_move = *b_index;
-		do_best(info, *b_index, 0);
-		i++;
-	}
-	if (info->choice_diff > calc_total_sortdiff(info) || info->elem_steps == moves)
-	{
-		info->choice_i = first_move;
-		info->choice_diff = calc_total_sortdiff(info);
-	}
-	roll_back_moves(info, move_buffer);
-	return (first_move);
+	ft_printf("pa = %d\n", info->diffs->pb);*/
 }
 
 void	sort_stacks(t_info *info)

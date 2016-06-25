@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 08:10:24 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 14:15:46 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 15:47:23 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	test_pa(t_info *info)
 	if (info->a && ft_strcmp(info->diffs->last_b, "pb") != 0)
 	{
 		ft_lstpushpop(&info->a, &info->b);
-		info->diffs->pa = calc_total_sortdiff(info);
+		info->diffs->pa = calc_total_sortdiff(info) * 0.5;
 		ft_lstpushpop(&info->b, &info->a);
 	}
 	else
@@ -29,7 +29,7 @@ void	test_pb(t_info *info)
 	if (info->b && ft_strcmp(info->diffs->last_a, "pa") != 0)
 	{
 		ft_lstpushpop(&info->b, &info->a);
-		info->diffs->pb = calc_total_sortdiff(info);
+		info->diffs->pb = calc_total_sortdiff(info) * 0.5;
 		ft_lstpushpop(&info->a, &info->b);
 	}
 	else

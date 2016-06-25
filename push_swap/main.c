@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 07:43:15 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/24 12:12:23 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 12:32:07 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int		main(int argc, char **argv)
 	trav = info.a;
 	while (trav)
 	{
-//		ft_printf("opt pos of %d : %d\t", *(int*)trav->data, trav->op_pos);
-//		printf("cur pos = %d\n", get_curpos(info.a, trav));
-//		ft_printf("%d moves to opt\n", calc_moves_to_op(trav->op_pos, get_curpos(info.a, trav), &info));
+		ft_printf("opt pos of %d : %d\t", *(int*)trav->data, trav->op_pos);
+		printf("cur pos = %d\n", get_curpos(info.a, trav));
+		ft_printf("%d moves to opt\n", calc_moves_to_op(trav->op_pos, get_curpos(info.a, trav), &info));
 		trav = trav->next;
 	}
-	sort_stacks(&info);
+	rollback_sort(&info);
 //	ft_printf("sb\n");
 	print_stacks(&info);
 //	ft_printf("total fuckedupness = %d\nindividual total fuckedupness with different moves\n", calc_total_sortdiff(&info));

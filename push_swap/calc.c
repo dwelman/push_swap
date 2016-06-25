@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 09:09:19 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 13:38:57 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 15:49:34 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int	calc_total_sortdiff(t_info *info)
 	trav = info->b;
 	while (trav)
 	{
-		s_diff += calc_moves_to_op(0, get_curpos(info->b, trav), info);
+		s_diff += calc_moves_to_op(0, get_curpos(info->b, trav), info) + 1;
 		s_diff += calc_moves_to_op(trav->op_pos, 0, info);
 		trav = trav->next;
 	}

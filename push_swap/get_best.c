@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 07:58:26 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/24 15:42:36 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 15:00:00 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	cont_best(t_info *info, int small_i, int small)
 		small = info->diffs->pb;
 	}
 	return (small_i);
-	//do_best(info, small_i);
 }
 
 int	get_best(t_info *info)
@@ -75,6 +74,5 @@ int	get_best(t_info *info)
 		small_i = 7;
 		small = info->diffs->rra;
 	}
-
 	return (cont_best(info, small_i, small));
 }

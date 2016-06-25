@@ -6,91 +6,117 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/25 09:48:14 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 15:58:13 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker/checker.h"
 
-int		do_tests_check(t_info *info)
+int		count_valid(t_diff *diffs)
 {
 	int valid;
 
 	valid = 11;
-	test_sa(info);
-	test_sb(info);
-	test_ss(info);
-	test_ra(info);
-	test_rb(info);
-	test_rr(info);
-	test_rra(info);
-	test_rrb(info);
-	test_rrr(info);
-	test_pa(info);
-	test_pb(info);
-	valid -= (2147483647 == info->diffs->sa);
-
-	valid -= (2147483647 == info->diffs->sb);
-	valid -= (2147483647 == info->diffs->ss);
-	valid -= (2147483647 == info->diffs->ra);
-	valid -= (2147483647 == info->diffs->rb);
-	valid -= (2147483647 == info->diffs->rr);
-	valid -= (2147483647 == info->diffs->rra);
-	valid -= (2147483647 == info->diffs->rrb);
-	valid -= (2147483647 == info->diffs->rrr);
-	valid -= (2147483647 == info->diffs->pa);
-	valid -= (2147483647 == info->diffs->pb);
-	ft_printf("sa = %d\n", info->diffs->sa);
-    ft_printf("sb = %d\n", info->diffs->sb);
-    ft_printf("ss = %d\n", info->diffs->ss);
-    ft_printf("ra = %d\n", info->diffs->ra);
-    ft_printf("rb = %d\n", info->diffs->rb);
-    ft_printf("rr = %d\n", info->diffs->rr);
-    ft_printf("rra = %d\n", info->diffs->rra);
-    ft_printf("rrb = %d\n", info->diffs->rrb);
-    ft_printf("rrr = %d\n", info->diffs->rrr);
-    ft_printf("pa = %d\n", info->diffs->pa);
-    ft_printf("pb = %d\n", info->diffs->pb);
+	valid -= (2147483647 == diffs->sa);
+	valid -= (2147483647 == diffs->sb);
+	valid -= (2147483647 == diffs->ss);
+	valid -= (2147483647 == diffs->ra);
+	valid -= (2147483647 == diffs->rb);
+	valid -= (2147483647 == diffs->rr);
+	valid -= (2147483647 == diffs->rra);
+	valid -= (2147483647 == diffs->rrb);
+	valid -= (2147483647 == diffs->rrr); 
+	valid -= (2147483647 == diffs->pa); 
+	valid -= (2147483647 == diffs->pb);
+/*	ft_printf("sa = %d\n", diffs->sa);
+    ft_printf("sb = %d\n", diffs->sb);
+    ft_printf("ss = %d\n", diffs->ss);
+    ft_printf("ra = %d\n", diffs->ra);
+    ft_printf("rb = %d\n", diffs->rb);
+    ft_printf("rr = %d\n", diffs->rr);
+    ft_printf("rra = %d\n", diffs->rra);
+    ft_printf("rrb = %d\n", diffs->rrb);
+    ft_printf("rrr = %d\n", diffs->rrr);
+    ft_printf("pa = %d\n", diffs->pa);
+    ft_printf("pb = %d\n", diffs->pb);
+*/	return (valid);
 }
 
-int		try_next(t_info *info, int moves, int *first_move)
+
+int		pick_option(int	options[12][2], int option_c)
 {
-	t_list	*move_buffer;
-	int		i;
-	int		*b_index;
-	int		s_diff;
+	int i;
+	int	small;
 
 	i = 0;
-	while (i < moves && i < info->max)
+	small = 0;
+	while (i < option_c)
 	{
-		do_tests(info);
-		b_index = (int*)malloc(sizeof(int));
-		*b_index =  get_best(info);
-		ft_lstpush(&move_buffer, ft_lstnew(b_index));
-		if (i == 0)
-			*first_move = *b_index;
-		do_best(info, *b_index, 0);
+		ft_printf("options[%d][1] = %d\t", i , options[i][1]);
+		ft_printf("options[%d][0] = %d\n", i , options[i][0]);
+		if (options[i][0] < options[small][0])
+			small = i;
 		i++;
 	}
-	s_diff = calc_total_sortdiff(info);
-	roll_back_moves(info, move_buffer);
-	return (s_diff);
+	ft_printf("chose %d\n", options[small][0]);
+	if (options[small][0] == 1)
+		exit(0);
+	return (options[small][1]);
+}
+
+t_diff	diff_copy(t_diff *src)
+{
+	t_diff	ret;
+
+	ret.sa = src->sa;
+	ret.sb = src->sb;
+	ret.ss = src->ss;
+	ret.ra = src->ra;
+	ret.rb = src->rb;
+	ret.rr = src->rr;
+	ret.rra = src->rra;
+	ret.rrb = src->rrb;
+	ret.rrr = src->rrr;
+	ret.pa = src->pa;
+	ret.pb = src->pb;
+	return (ret);
 }
 
 void	rollback_sort(t_info *info)
 {
 	int cur_move;
+	int valid;
+	int	option_c;
+	int	options[12][2];
+	int	moves_done;
+	t_info	mask;
 
 	ft_strcpy(info->diffs->last_a,"qq");
 	ft_strcpy(info->diffs->last_b,"qq");
 	info->choice_diff = calc_total_sortdiff(info);
 	while (calc_total_sortdiff(info) != 0)
 	{
-	//	ft_printf("last move a : %s\n", info->diffs->last_a);
-	//	ft_printf("last move b : %s\n", info->diffs->last_b);
+		valid = count_valid(info->diffs);
 		do_tests(info);
-		cur_move = get_best(info, 0);
-//		do_best(info, get_best(info), 1);
+		option_c = 0;
+		info_mask(info, &mask);
+		moves_done = 42;
+		while (valid > 0 && moves_done > 1)
+		{
+//			ft_printf("=====ENTERED LOOP====\n");
+			cur_move = get_best(&mask);
+//			ft_printf("cur_move = %d\n", cur_move);
+			options[option_c][0] = try_next(info, 2, cur_move, &moves_done);
+			options[option_c][1] = cur_move;
+			do_function(mask.diffs, cur_move, &set_to_max);
+//			ft_printf("valid = %d\n", valid);
+//			ft_printf("moves_done = %d\n", moves_done);
+			valid = count_valid(mask.diffs);
+			option_c++;
+			ft_printf("options_c = %d\n", option_c);
+		}
+		ft_printf("=====OUT OF LOOP====\n");
+		do_best(info, pick_option(options, option_c), 1);
 		print_stacks(info);
 	}
 }

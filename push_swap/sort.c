@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/25 09:41:50 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/25 09:48:37 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ void	sort_stacks(t_info *info)
 	{
 		do_tests(info);
 		if (*(int *)info->a->data <= info->median)
-			info->diffs->pa = -2000;
+			info->diffs->pa = -1000;
+		if (*(int *)info->a->data <= info->median && *(int *)info->a->next->data <= info->median &&
+				ft_strcmp(info->diffs->last_a, "sa") != 0 && *(int *)info->a->data > *(int *)info->a->next->data)
+			info->diffs->sa = -2000;
 		if (check_stack(info) == 1 && check_stack_desc(info) == 1)
 		{
 			while (info->elem_b != 0)

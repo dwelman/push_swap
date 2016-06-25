@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 07:47:54 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/25 09:34:44 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/25 10:10:47 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,18 @@ int	check_stack(t_info *info)
 		i++;
 	}
 	return (1);
+}
+
+int	look_below_median(t_info *info)
+{
+	t_list	*crawl;
+
+	crawl = info->a;
+	while (crawl != NULL)
+	{
+		if (*(int *)crawl->data <= info->median)
+			return (1);
+		crawl = crawl->next;
+	}
+	return (0);
 }

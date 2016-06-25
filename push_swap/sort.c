@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/24 16:50:45 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 09:41:50 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,30 @@ void	sort_stacks(t_info *info)
 	info->choice_diff = calc_total_sortdiff(info);
 	while (calc_total_sortdiff(info) != 0)
 	{
-		ft_printf("last move a : %s\n", info->diffs->last_a);
-		ft_printf("last move b : %s\n", info->diffs->last_b);
 		do_tests(info);
+		if (*(int *)info->a->data <= info->median)
+			info->diffs->pa = -2000;
+		if (check_stack(info) == 1 && check_stack_desc(info) == 1)
+		{
+			while (info->elem_b != 0)
+			{
+				info->diffs->pb = -2000;
+				do_best(info, get_best(info), 1);
+			}
+			break;
+		}
+		if (check_stack_desc(info) == 1)
+		{
+			info->diffs->sb = 200000;
+			info->diffs->ss = 200000;
+			info->diffs->rb = 200000;
+			info->diffs->rrb = 200000;
+			info->diffs->rrr = 200000;
+		}
 		do_best(info, get_best(info), 1);
+		info->choice_diff = calc_total_sortdiff(info);
 		print_stacks(info);
+		ft_printf("last a = %s\n", info->diffs->last_a);
+		ft_printf("last b = %s\n", info->diffs->last_b);
 	}
 }

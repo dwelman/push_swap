@@ -59,6 +59,7 @@ int	median(t_info *info)
 			i++;
 		}	
 		sort_arr(list, info->max);
+		get_optimal(info, list);
 		i = 0;
 		ret = list[info->max / 2];
 		free(list);

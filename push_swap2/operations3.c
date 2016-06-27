@@ -11,12 +11,12 @@ void	pa(t_algo *algo)
 		algo->elem_b--;
 	}
 	else
-		ft_putstr_fd("Error : Nothing on stack b to pop.", 2);
+		ft_putendl_fd("Error : Nothing on stack b to pop.", 2);
 }
 
 void	pb(t_algo *algo)
 {
-	if (algo->stack_b != NULL)
+	if (algo->stack_a != NULL)
 	{
 		ft_lstpushpop(&algo->stack_a, &algo->stack_b);
 		ft_lstappend(&algo->operations, ft_lstnew(ft_strdup("pb")));
@@ -25,5 +25,5 @@ void	pb(t_algo *algo)
 		algo->elem_b++;
 	}
 	else
-		ft_putstr_fd("Error : Nothing on stack a to pop.", 2);
+		ft_putendl_fd("Error : Nothing on stack a to pop.", 2);
 }

@@ -6,18 +6,24 @@
 #    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/20 09:38:38 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/25 14:40:27 by ddu-toit         ###   ########.fr        #
+#    Updated: 2016/06/27 14:54:03 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC = main.c ../utils/store_stack.c ../utils/error_check.c ../utils/check_dup.c\
-	  ../utils/inc_elems.c output.c check_stack.c calc.c operations.c\
-		operations2.c operations3.c
+	  ../utils/inc_elems.c output.c check_stack.c calc.c calc2.c operations.c\
+	  operations2.c operations3.c set_struct.c bubble_sort.c dumb_sort.c\
+	  merge_sort.c rollback_sort.c get_optimal.c get_best.c do_best_op.c\
+	  try_next.c roll_back_moves.c weigh_sort.c test_moves.c test_moves2.c\
+	  test_moves3.c
 
 OBJ = main.o store_stack.o error_check.o check_dup.o inc_elems.o output.o\
-		check_stack.o calc.o operations.o operations2.o operations3.o\
+	  check_stack.o calc.o calc2.o operations.o operations2.o operations3.o\
+	  set_struct.o bubble_sort.o dumb_sort.o merge_sort.o rollback_sort.o\
+	  get_optimal.o get_best.o do_best_op.o try_next.o roll_back_moves.o\
+	  weigh_sort.o test_moves.o test_moves2.o test_moves3.o
 
 CFLAG = -Wall -Werror -Wextra
 

@@ -18,19 +18,36 @@ typedef struct	s_algo
 	int		elem_b;
 	t_list	*operations;
 	int		op_count;
+	int		max;
+	int		valid;
+	t_diff	*diffs;
 }				t_algo;
 
-typedef struct	s_ps
+enum
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		elem_a;
-	int		elem_b;
-	int		median;
-	int		max_val;
-	int		min_val;
-	int		max_steps;	
-}				t_ps;
+	DUMB,
+	BUBBLE,
+	MERGE,
+	SELECT
+};
+
+void			rollback_sort(t_info *info);
+
+void			split_sort(t_algo *algo, t_info *info);
+
+int				smallest(t_list *list, int *pos);
+
+int				stack_sorted(t_list *stack);
+
+int				stack_sorted_desc(t_list *stack);
+
+int				dumb_sort(t_algo *algo, t_info *info);
+
+void			bubble_sort(t_algo *algo, t_info *info);
+
+void			init_info(t_info *info);
+
+t_algo			*new_algo(t_info *info);
 
 void			sa(t_algo *algo);
 

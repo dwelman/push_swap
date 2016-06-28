@@ -6,13 +6,13 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 07:58:26 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/25 15:00:00 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/28 09:22:01 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker/checker.h"
 
-int	cont_best(t_info *info, int small_i, int small)
+int	cont_best3(t_info *info, int small_i, int small)
 {
 	if (small > info->diffs->rrb)
 	{
@@ -37,23 +37,8 @@ int	cont_best(t_info *info, int small_i, int small)
 	return (small_i);
 }
 
-int	get_best(t_info *info)
+int	cont_best2(t_info *info, int small_i, int small)
 {
-	int	small_i;
-	int	small;
-
-	small_i = 1;
-	small = info->diffs->sa;
-	if (small > info->diffs->sb)
-	{
-		small_i = 2;
-		small = info->diffs->sb;
-	}
-	if (small > info->diffs->ss)
-	{
-		small_i = 3;
-		small = info->diffs->ss;
-	}
 	if (small > info->diffs->ra)
 	{
 		small_i = 4;
@@ -74,5 +59,25 @@ int	get_best(t_info *info)
 		small_i = 7;
 		small = info->diffs->rra;
 	}
-	return (cont_best(info, small_i, small));
+	return (cont_best3(info, small_i, small));
+}
+
+int	get_best(t_info *info)
+{
+	int	small_i;
+	int	small;
+
+	small_i = 1;
+	small = info->diffs->sa;
+	if (small > info->diffs->sb)
+	{
+		small_i = 2;
+		small = info->diffs->sb;
+	}
+	if (small > info->diffs->ss)
+	{
+		small_i = 3;
+		small = info->diffs->ss;
+	}
+	return (cont_best2(info, small_i, small));
 }

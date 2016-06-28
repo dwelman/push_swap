@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 14:44:52 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/25 15:14:58 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/28 09:05:40 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_stacks(t_list *stack_a, t_list *stack_b, t_info *info)
 {
-	int i;
+	int		i;
 	t_list	*trav_a;
 	t_list	*trav_b;
 
@@ -65,15 +65,15 @@ int		collapse_step(t_list *trav)
 	if ((ft_strcmp("sa", (char*)trav->data) == 0 &&
 		ft_strcmp("sb", (char*)trav->next->data) == 0) ||
 		(ft_strcmp("sb", (char*)trav->data) == 0 &&
-		 ft_strcmp("sa", (char*)trav->next->data) == 0))
+		ft_strcmp("sa", (char*)trav->next->data) == 0))
 	{
-			ft_putendl("ss");
-			return (1);
+		ft_putendl("ss");
+		return (1);
 	}
 	if ((ft_strcmp("ra", (char*)trav->data) == 0 &&
 		ft_strcmp("rb", (char*)trav->next->data) == 0) ||
 		(ft_strcmp("rb", (char*)trav->data) == 0 &&
-		 ft_strcmp("ra", (char*)trav->next->data) == 0))
+		ft_strcmp("ra", (char*)trav->next->data) == 0))
 	{
 		ft_putendl("rr");
 		return (1);
@@ -81,7 +81,7 @@ int		collapse_step(t_list *trav)
 	if ((ft_strcmp("rra", (char*)trav->data) == 0 &&
 		ft_strcmp("rrb", (char*)trav->next->data) == 0) ||
 		(ft_strcmp("rrb", (char*)trav->data) == 0 &&
-		 ft_strcmp("rra", (char*)trav->next->data) == 0))
+		ft_strcmp("rra", (char*)trav->next->data) == 0))
 	{
 		ft_putendl("rrr");
 		return (1);
@@ -98,7 +98,7 @@ void	print_steps(t_list *steps)
 	{
 		if (trav->next && collapse_step(trav))
 			trav = trav->next;
-		else if ( trav->next && trav->next->next && collapse_step2(trav))
+		else if (trav->next && trav->next->next && collapse_step2(trav))
 			trav = trav->next->next;
 		else
 			ft_printf("%s\n", (char*)trav->data);

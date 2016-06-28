@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/25 09:48:30 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/28 15:18:03 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct	s_info
 	int				elem_a;
 	int				elem_b;
 	int				max;
-	unsigned int	in_count;
+	int				in_count;
+	int				selection;
 	t_list			*steps;
 	int				elem_steps;
 	int				median;
@@ -49,7 +50,17 @@ typedef struct	s_info
 	t_diff			*diffs;
 }				t_info;
 
+void			info_mask(t_info *src, t_info *mask);
+
+t_list			*ft_lstcpy(t_list *start_src);
+
+int				look_below_median(t_info *info);
+
 void			roll_back_moves(t_info *info, t_list *move_buffer);
+
+int				try_next(t_info *info, int moves, int first_move, int *moves_done);
+
+void			do_tests(t_info *info);
 
 void			do_best(t_info *info, int i, int save);
 
@@ -81,13 +92,9 @@ int				store_stack(t_list **list, int argc, char **argv);
 
 void			check_dup(t_list *list);
 
-void			print_stacks(t_info *info);
+void			print_stacks(t_list *a, t_list *b, t_info *info);
 
-void			print_steps(t_info *info);
-
-void			dumb_sort(t_info *info);
-
-void			sort_stack(t_list **start, t_info *info);
+void			print_steps(t_list *steps);
 
 int				median(t_info *info);
 
@@ -119,13 +126,11 @@ void			test_pa(t_info *info);
 
 void			test_pb(t_info *info);
 
-void			sort_stacks(t_info *info);
+t_info			*sort_stacks(t_info *info);
 
 void			do_function(t_diff *diff, int i, void (f)(int *));
 
 void			set_to_max(int *num);
-
-int				do_tests_check(t_info *info);
 
 void			rollback_sort(t_info *info);
 

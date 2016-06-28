@@ -6,69 +6,13 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 09:09:19 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/25 15:49:34 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/28 08:52:18 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker/checker.h"
 
-void	sort_arr(int *arr, int elem)
-{
-	int	*ptr;
-	int	swapped;
-	int	i;
-	int	temp;
-
-	swapped = 1;
-	i = 0;
-	ptr = arr;
-	while (swapped)
-	{
-		swapped = 0;
-		i = 0;
-		while (i + 1 < elem)
-		{
-			if (ptr[i] > ptr[i + 1])
-			{
-				temp = ptr[i];
-				ptr[i] = ptr[i + 1];
-				ptr[i + 1] = temp;
-				swapped = 1;
-			}
-			i++;
-		}
-	}
-}
-
-int	median(t_info *info)
-{
-	int		*list;
-	int		i;
-	int		ret;
-	t_list	*trav;
-
-	list = (int*)malloc(sizeof(int) * info->max);
-	if (list != NULL)
-	{
-		trav = info->a;
-		i = 0;
-		while (trav != NULL)
-		{
-			list[i] = *(int*)trav->data;
-			trav = trav->next;
-			i++;
-		}	
-		sort_arr(list, info->max);
-		get_optimal(info, list);
-		i = 0;
-		ret = list[info->max / 2];
-		free(list);
-		return (ret);
-	}
-	return (-1);
-}
-
-int	get_curpos(t_list *list, t_list *node)
+int		get_curpos(t_list *list, t_list *node)
 {
 	int		i;
 	t_list	*trav;
@@ -77,7 +21,6 @@ int	get_curpos(t_list *list, t_list *node)
 	trav = list;
 	while (trav != NULL)
 	{
-
 		if (trav == node)
 			return (i);
 		i++;
@@ -86,17 +29,29 @@ int	get_curpos(t_list *list, t_list *node)
 	return (-1);
 }
 
-int	calc_moves_to_op(int opt, int cur, t_info *info)
+int		short_path(int up, int down)
+{
+	if (up <= down)
+		return (up);
+	else
+		return (down);
+}
+
+void	init(int cur, int *up, int *down, int *pos)
+{
+	*pos = cur;
+	*down = 0;
+	*up = 0;
+}
+
+int		calc_moves_to_op(int opt, int cur, t_info *info)
 {
 	int		pos;
 	int		up;
 	int		down;
 
-	pos = cur;
-	down = 0;
-	up = 0;
+	init(cur, &up, &down, &pos);
 	while (pos != opt)
-	{
 		if (pos == info->max)
 			pos = 0;
 		else
@@ -104,10 +59,8 @@ int	calc_moves_to_op(int opt, int cur, t_info *info)
 			pos++;
 			up++;
 		}
-	}
 	pos = cur;
 	while (pos != opt)
-	{
 		if (pos == 0)
 			pos = info->max;
 		else
@@ -115,23 +68,21 @@ int	calc_moves_to_op(int opt, int cur, t_info *info)
 			pos--;
 			down++;
 		}
-	}
-	if (up <= down)
-		return (up);
-	else
-		return (down);
+	return (short_path(up, down));
 }
 
-int	calc_total_sortdiff(t_info *info)
+int		calc_total_sortdiff(t_info *info)
 {
 	int		s_diff;
 	t_list	*trav;
+	int		c_pos;
 
 	s_diff = 0;
 	trav = info->a;
 	while (trav)
 	{
-		s_diff += calc_moves_to_op(trav->op_pos, get_curpos(info->a, trav), info);
+		c_pos = get_curpos(info->a, trav);
+		s_diff += calc_moves_to_op(trav->op_pos, c_pos, info);
 		trav = trav->next;
 	}
 	trav = info->b;

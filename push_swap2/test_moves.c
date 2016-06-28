@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 07:37:27 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/27 14:58:29 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/28 09:46:03 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	test_sa(t_info *info)
 
 void	test_sb(t_info *info)
 {
-	if (info->b && ft_strcmp(info->diffs->last_b, "sb") != 0 
+	if (info->b && ft_strcmp(info->diffs->last_b, "sb") != 0
 		&& stack_sorted_desc(info->b) == 0 && info->elem_b > 1)
 	{
 		ft_lstswap(info->b);

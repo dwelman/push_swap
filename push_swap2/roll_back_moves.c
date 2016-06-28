@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 15:25:31 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/25 12:01:46 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/28 09:38:04 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,14 @@ void	do_inverse(t_info *info, int i)
 void	roll_back_moves(t_info *info, t_list *move_buffer)
 {
 	t_list	*trav;
-	int i;
-	
+	int		i;
+
 	i = info->max;
 	trav = move_buffer;
 	while (trav)
 	{
-//		printf("trav = %p\n", trav);
-//		printf("trav data= %p\n", trav->data);
-//		printf("rolling back %d...", *(int*)trav->data);
 		do_inverse(info, *(int*)trav->data);
-//		printf("DONE %d\n", *(int*)trav->data);
 		trav = trav->next;
 	}
-//	printf("deleting list\n");
 	ft_lstdel(move_buffer);
-//	printf("deleted list\n");
 }

@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 11:28:54 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/27 14:57:02 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/28 15:54:31 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,50 +38,54 @@ void	do_tests(t_info *info)
 	ft_printf("pa = %d\n", info->diffs->pb);*/
 }
 
-void	sort_stacks(t_info *info)
+t_info	*sort_stacks(t_info *info)
 {
-	ft_strcpy(info->diffs->last_a,"qq");
-	ft_strcpy(info->diffs->last_b,"qq");
-	info->choice_diff = calc_total_sortdiff(info);
-	while (calc_total_sortdiff(info) != 0)
+	t_info	*mask = (t_info*)malloc(sizeof(t_info));
+
+	info_mask(info, mask);
+	ft_strcpy(mask->diffs->last_a, "qq");
+	ft_strcpy(mask->diffs->last_b, "qq");
+	mask->choice_diff = calc_total_sortdiff(mask);
+	while (calc_total_sortdiff(mask) != 0)
 	{
-		if (info->elem_a == info->max && stack_sorted(info->a) == 1)
+		if (mask->elem_a == mask->max && stack_sorted(mask->a) == 1)
 			break ;
-		do_tests(info);
-		if (*(int *)info->a->data <= info->median)
-			info->diffs->pa = -1000;
-		if (*(int *)info->a->data <= info->median && *(int *)info->a->next->data <= info->median &&
-				ft_strcmp(info->diffs->last_a, "sa") != 0 && *(int *)info->a->data > *(int *)info->a->next->data)
-			info->diffs->sa = -2000;
-		if (ft_strcmp(info->diffs->last_a, "sa") != 0 && *(int *)info->a->data > *(int *)info->a->next->data)
-			info->diffs->sa = -2000;
-		if (stack_sorted(info->a) == 1 && stack_sorted_desc(info->b) == 1)
+		do_tests(mask);
+		if (*(int *)mask->a->data <= mask->median)
+			mask->diffs->pa = -1000;
+		if (*(int *)mask->a->data <= mask->median && *(int *)mask->a->next->data <= mask->median &&
+				ft_strcmp(mask->diffs->last_a, "sa") != 0 && *(int *)mask->a->data > *(int *)mask->a->next->data)
+			mask->diffs->sa = -2000;
+		if (ft_strcmp(mask->diffs->last_a, "sa") != 0 && *(int *)mask->a->data > *(int *)mask->a->next->data)
+			mask->diffs->sa = -2000;
+		if (stack_sorted(mask->a) == 1 && stack_sorted_desc(mask->b) == 1)
 		{
 		//	while (info->elem_b != 0)
 		//	{
-			if (ft_strcmp(info->diffs->last_a, "pa") != 0)
-				info->diffs->pb = -2000;
+			if (ft_strcmp(mask->diffs->last_a, "pa") != 0)
+				mask->diffs->pb = -2000;
 		//		do_best(info, get_best(info), 1);
 		//	}
 		//	break;
 		}
-		if (look_below_median(info) == 1 && stack_sorted_desc(info->b) == 1)
+		if (look_below_median(mask) == 1 && stack_sorted_desc(mask->b) == 1)
 		{
-			info->diffs->ra -= 510;
-			info->diffs->rra -= 500;
+			mask->diffs->ra -= 510;
+			mask->diffs->rra -= 500;
 		}
-		if (stack_sorted_desc(info->b) == 1)
+		if (stack_sorted_desc(mask->b) == 1)
 		{
-			info->diffs->sb = 200000;
-			info->diffs->ss = 200000;
-			info->diffs->rb = 200000;
-			info->diffs->rrb = 200000;
-			info->diffs->rrr = 200000;
+			mask->diffs->sb = 200000;
+			mask->diffs->ss = 200000;
+			mask->diffs->rb = 200000;
+			mask->diffs->rrb = 200000;
+			mask->diffs->rrr = 200000;
 		}
-		do_best(info, get_best(info), 1);
+		do_best(mask, get_best(mask), 1);
 	//info->choice_diff = calc_total_sortdiff(info);
-//		print_stacks(info);
-		ft_printf("last a = %s\n", info->diffs->last_a);
-		ft_printf("last b = %s\n", info->diffs->last_b);
+//	//	ft_printf("last a = %s\n", info->diffs->last_a);
+//		ft_printf("last b = %s\n", info->diffs->last_b);
 	}
+	print_stacks(mask->a, mask->b, info);
+	return (mask);
 }

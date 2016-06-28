@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/27 08:25:16 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/27 11:20:34 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/28 09:05:08 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	bubble_sort(t_algo *algo, t_info *info)
 			&& (algo->op_count < info->in_count))
 	{
 		cur = algo->stack_a;
-		if (cur && cur->next &&( (*(int*)cur->data > *(int*)cur->next->data) || *(int*)cur->next->data))
+		if (cur && cur->next && ((*(int*)cur->data > *(int*)cur->next->data)
+			|| *(int*)cur->next->data))
 			sa(algo);
 		else
 			ra(algo);

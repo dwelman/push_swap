@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/28 08:54:34 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/06/28 08:54:36 by ddu-toit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void            rr(t_algo *algo)
+void	rr(t_algo *algo)
 {
 	if (algo->stack_a != NULL && algo->stack_a->next != NULL
 		&& algo->stack_b != NULL && algo->stack_b->next != NULL)
@@ -14,7 +26,7 @@ void            rr(t_algo *algo)
 		ft_putendl_fd("Error : Not enough elements to rotate stacks", 2);
 }
 
-void            rra(t_algo *algo)
+void	rra(t_algo *algo)
 {
 	if (algo->stack_a != NULL && algo->stack_a->next != NULL)
 	{
@@ -26,7 +38,7 @@ void            rra(t_algo *algo)
 		ft_putendl_fd("Error : Not enough elements to rev-rotate stack a", 2);
 }
 
-void            rrb(t_algo *algo)
+void	rrb(t_algo *algo)
 {
 	if (algo->stack_b != NULL && algo->stack_b->next != NULL)
 	{
@@ -38,7 +50,7 @@ void            rrb(t_algo *algo)
 		ft_putendl_fd("Error : Not enough elements to rev-rotate stack b", 2);
 }
 
-void            rrr(t_algo *algo)
+void	rrr(t_algo *algo)
 {
 	if (algo->stack_a != NULL && algo->stack_a->next != NULL
 		&& algo->stack_b != NULL && algo->stack_b->next != NULL)

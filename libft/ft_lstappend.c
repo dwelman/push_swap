@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstappend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/09 08:28:09 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/05/13 10:33:39 by ddu-toit         ###   ########.fr       */
+/*   Created: 2016/06/22 13:41:39 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/06/22 15:27:17 by daviwel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
 
-void	*ft_memset(void *str, int c, size_t n)
+void	ft_lstappend(t_list **list, t_list *node)
 {
-	size_t	i;
-	char	*temp;
+	t_list	*trav;
 
-	i = 0;
-	temp = (char*)str;
-	while (i < n)
+	if (*list == NULL)
 	{
-		temp[i] = (unsigned char)c;
-		i++;
+		*list = node;
+		return ;
 	}
-	return (str);
+	trav = *list;
+	while (trav->next != NULL)
+		trav = trav->next;
+	trav->next = node;
 }

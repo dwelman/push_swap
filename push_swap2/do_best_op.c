@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 08:20:27 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/28 14:19:10 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/29 14:25:05 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	do_best2(t_info *info, int i, int save)
 
 void	do_best(t_info *info, int i, int save)
 {
+	info->elem_steps++;
 	if (i == SA)
 	{
 		ft_lstswap(info->a);

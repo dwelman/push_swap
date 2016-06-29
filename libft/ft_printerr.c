@@ -6,12 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 09:37:09 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/05/27 10:03:23 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/14 16:58:48 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static const char	*scan_flags(const char *off, t_flags *fl)
 {
@@ -115,7 +114,7 @@ static int			get_type(const char *str, va_list *args, int *len)
 	return (offset + 1);
 }
 
-int					ft_printf(const char *format, ...)
+void				ft_printerr(const char *format, ...)
 {
 	const char		*trav;
 	unsigned int	offset;
@@ -140,5 +139,5 @@ int					ft_printf(const char *format, ...)
 		}
 	}
 	va_end(arg);
-	return (len);
+	exit(-1);
 }

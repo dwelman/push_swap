@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:31:57 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/28 15:18:03 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/29 16:34:47 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,13 @@ void			inc_elems(t_info *info, int order);
 
 void			error_check(int argc, char **argv);
 
+int				check_args(int argc, char **argv);
+
 int				check_int(char *arg);
 
 void			error_print(void);
 
-int				store_stack(t_list **list, int argc, char **argv);
+int				store_stack(t_list **list, int argc, char **argv, int u_arg);
 
 void			check_dup(t_list *list);
 

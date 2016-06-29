@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrwide.c                                    :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/26 08:48:12 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/20 10:39:56 by daviwel          ###   ########.fr       */
+/*   Created: 2016/06/23 07:41:18 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/06/23 07:57:34 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
 
-void	ft_putstrwide(wchar_t *str)
+void	ft_lstdel(t_list *start)
 {
-	while (*str)
+	t_list	*trav;
+	t_list	*prev;
+
+	trav = start;
+	while (trav)
 	{
-		ft_putchar((char)*str);
-		str++;
+		if (trav->data)
+		{
+			free(trav->data);
+			trav->data = NULL;
+		}
+		prev = trav;
+		trav = trav->next;
+		free(prev);
+		prev = NULL;
 	}
 }

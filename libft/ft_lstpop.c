@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 13:56:05 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/23 12:04:44 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/27 16:40:04 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@ t_list	*ft_lstpop(t_list **first)
 
 	temp = *first;
 	crawl = *first;
-	if (crawl->next != NULL)
+	if (crawl)
 	{
-		crawl = crawl->next;
-		*first = crawl;
+		if (crawl->next != NULL)
+		{
+			crawl = crawl->next;
+			*first = crawl;
+		}
+		else
+			*first = NULL;
 	}
-	else
-		*first = NULL;
 	temp->next = NULL;
 	return (temp);
 }

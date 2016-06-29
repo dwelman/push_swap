@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/21 07:43:15 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/28 15:54:36 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/29 16:45:38 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,25 @@
 /*
 ** Runs sorting algorithms and stores results
 */
+
+void	run_test2(t_algo *best, t_info *info)
+{
+	t_info	*w_sort;
+
+	w_sort = weight_sort(info);
+	rollback_sort(info);
+	if (info->elem_steps < best->op_count && stack_sorted(info->a))
+	{
+		if (info->elem_steps < w_sort->elem_steps)
+			print_steps(info->steps);
+		else
+			print_steps(w_sort->steps);
+	}
+	else
+		print_steps(best->operations);
+	delete_mask(w_sort);
+	delete_mask(info);
+}
 
 void	run_sort_algorithms(t_info *info)
 {
@@ -34,14 +53,7 @@ void	run_sort_algorithms(t_info *info)
 	split_sort(s_sort, info);
 	if (s_sort->op_count < best->op_count && stack_sorted(s_sort->stack_a))
 		best = s_sort;
-	t_info *test;
-	test = sort_stacks(info);
-	ft_printf("OPERATIONS FOR THIS WEIRD FUNCTION = %d\n", test->elem_steps);
-	rollback_sort(info);
-	if (info->elem_steps < best->op_count && stack_sorted(info->a))
-		print_steps(info->steps);
-	else
-		print_steps(best->operations);
+	run_test2(best, info);
 	delete_algo(&b_sort);
 	delete_algo(&s_sort);
 	delete_algo(&d_sort);
@@ -50,10 +62,14 @@ void	run_sort_algorithms(t_info *info)
 int		main(int argc, char **argv)
 {
 	t_info	info;
+	int		n;
 
 	init_info(&info);
-	error_check(argc, argv);
-	info.elem_a = store_stack(&info.a, argc, argv);
+	n = check_args(argc, argv);
+	if (n)
+		info.elem_a = store_stack(&info.a, n , ft_strsplit(argv[1], ' '), !(n));
+	else
+		info.elem_a = store_stack(&info.a, argc, argv, !(n));
 	info.max = info.elem_a;
 	check_dup(info.a);
 	info.median = median(&info);

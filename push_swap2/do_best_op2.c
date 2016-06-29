@@ -6,7 +6,7 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 08:20:27 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/28 14:08:23 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/29 14:31:27 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	do_best6(t_info *info, int i, int save)
 {
 	if (i == PA)
 	{
-		ft_lstpushpop(&info->a, &info->b);
+		ft_lstpushpop(&info->b, &info->a);
 		inc_elems(info, 0);
 		if (save)
 			ft_lstappend(&info->steps, ft_lstnew("pa"));
@@ -24,7 +24,7 @@ void	do_best6(t_info *info, int i, int save)
 	}
 	else if (i == PB)
 	{
-		ft_lstpushpop(&info->b, &info->a);
+		ft_lstpushpop(&info->a, &info->b);
 		inc_elems(info, 1);
 		if (save)
 			ft_lstappend(&info->steps, ft_lstnew("pb"));

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daviwel <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/05/11 13:05:40 by daviwel           #+#    #+#              #
-#    Updated: 2016/06/21 08:00:17 by daviwel          ###   ########.fr        #
+#    Created: 2016/05/13 16:42:54 by ddu-toit          #+#    #+#              #
+#    Updated: 2016/06/27 07:31:50 by ddu-toit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,20 +22,34 @@ FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 		ft_strmap.c ft_strmapi.c ft_strequ.c ft_strnequ.c ft_strsub.c \
 		ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c ft_putchar.c \
 		ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c \
-		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c get_next_line.c \
-		ft_getflags.c ft_padfunc.c ft_padfuncch.c ft_padfuncwide.c \
-		ft_printf.c ft_printfaux.c ft_putstrwide.c ft_strlenwide.c \
-		ft_lstnew.c ft_lstswap.c ft_lstpop.c ft_lstpush.c ft_lstrot.c \
-		ft_lstrotrev.c ft_lstpushpop.c
+		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
+		ft_printf_format.c ft_printf_flags.c ft_printf_out.c ft_printf.c\
+		ft_printf_conv.c get_next_line.c ft_printerr.c\
+		ft_lstappend.c ft_lstdel.c ft_lstrot.c ft_lstrotrev.c ft_lstpush.c\
+		ft_lstpop.c ft_lstswap.c ft_lstnew.c ft_lstpushpop.c ft_lstcpy.c
 
-OBJECTS = $(FILES:.c=.o)
+OBJECTS = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o \
+		ft_memchr.o ft_memcmp.o ft_strlen.o ft_strdup.o ft_strcpy.o \
+		ft_strncpy.o ft_strcat.o ft_strncat.o ft_strlcat.o ft_strchr.o \
+		ft_strrchr.o ft_strstr.o ft_strnstr.o ft_strcmp.o ft_strncmp.o \
+		ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o \
+		ft_isprint.o ft_toupper.o ft_tolower.o ft_memalloc.o ft_memdel.o \
+		ft_strnew.o ft_strdel.o ft_strclr.o ft_striter.o ft_striteri.o \
+		ft_strmap.o ft_strmapi.o ft_strequ.o ft_strnequ.o ft_strsub.o \
+		ft_strjoin.o ft_strtrim.o ft_strsplit.o ft_itoa.o ft_putchar.o \
+		ft_putstr.o ft_putendl.o ft_putnbr.o ft_putchar_fd.o\
+		ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o\
+		ft_printf_format.o ft_printf_flags.o ft_printf_out.o ft_printf.o\
+		ft_printf_conv.o get_next_line.o ft_printerr.o\
+		ft_lstappend.o ft_lstdel.o ft_lstrot.o ft_lstrotrev.o ft_lstpush.o\
+		ft_lstpop.o ft_lstswap.o ft_lstnew.o ft_lstpushpop.o ft_lstcpy.o
 
 CFLAG = -Wall -Werror -Wextra -c
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(CFLAG) $(FILES)
+	clang $(CFLAG) $(FILES)
 	ar rc $(NAME) $(OBJECTS)
 	ranlib $(NAME)
 

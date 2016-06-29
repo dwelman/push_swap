@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 14:20:27 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/22 15:11:55 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/29 17:09:59 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ int		parse_instruction(char *line, t_info *info)
 	}
 	else if (ft_strcmp(line, "pa") == 0)
 	{
-		ft_lstpushpop(&(info->a), &(info->b));
+		ft_lstpushpop(&(info->b), &(info->a));
 		inc_elems(info, 0);
 	}
 	else if (ft_strcmp(line, "pb") == 0)
 	{
-		ft_lstpushpop(&(info->b), &(info->a));
+		ft_lstpushpop(&(info->a), &(info->b));
 		inc_elems(info, 1);
 	}
 	else if (ft_strcmp(line, "ra") == 0)

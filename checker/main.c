@@ -6,40 +6,35 @@
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:41:51 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/24 07:46:59 by daviwel          ###   ########.fr       */
+/*   Updated: 2016/06/29 17:16:42 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	print_list(t_list *list)
+void	init_info(t_info *info)
 {
-	int	*num;
-
-	while (list != NULL)
-	{
-		num = list->data;
-		ft_printf("%d\t", *num);
-		list = list->next;
-	}
+	info->elem_a = 0;
+	info->elem_b = 0;
+	info->elem_steps = 0;
+	info->b = NULL;
+	info->a = NULL;
 }
 
 int		main(int argc, char **argv)
 {
 	t_info	info;
+	int		n;
 
-	error_check(argc, argv);
-	info.elem_a = store_stack(&info.a, argc, argv);
+	init_info(&info);
+	n = check_args(argc, argv);
+	if (n)
+		info.elem_a = store_stack(&info.a, n, ft_strsplit(argv[1], ' '), !(n));
+	else
+		info.elem_a = store_stack(&info.a, argc, argv, !(n));
 	info.max = info.elem_a;
-	info.b = (t_list *)malloc(sizeof(t_list));
-	info.b = NULL;
-	info.elem_b = 0;
-	info.diffs = (t_diff *)malloc(sizeof(t_diff));
+	print_stacks(info.a, info.b, &info);
 	get_next_instruction(&info);
-	//print_list(info.a);
-	//ft_printf("| a\n");
-	//print_list(info.b);
-	//ft_printf("| b\n");
 	validate(&info);
 	return (0);
 }

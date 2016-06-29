@@ -1,35 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store_stack.c                                      :+:      :+:    :+:   */
+/*   ft_lstcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/21 07:52:30 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/29 16:37:11 by ddu-toit         ###   ########.fr       */
+/*   Created: 2016/06/25 13:13:39 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/06/28 09:54:42 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker/checker.h"
 
-int		store_stack(t_list **list, int argc, char **argv, int u_arg)
+static void	copy_opt(t_list *src, t_list *dst)
 {
-	int	*num;
-	int	elem;
-
-	elem = 1;
-	if (argc > 1)
+	while (src && dst)
 	{
+		dst->op_pos = src->op_pos;
+		dst = dst->next;
+		src = src->next;
+	}
+}
+
+t_list	*ft_lstcpy(t_list *start_src)
+{
+	t_list	*trav;
+	t_list	*new;
+	int		*num;
+
+	new = NULL;
+	if (start_src)
+	{
+		trav = start_src;
 		num = (int*)malloc(sizeof(int));
-		*num = check_int(argv[--argc]);
-		*list = ft_lstnew(num);
-		while (argc >= 1 + u_arg)
+		*num = *(int*)trav->data;
+		new = ft_lstnew(num);
+		trav = trav->next;
+		while (trav)
 		{
 			num = (int*)malloc(sizeof(int));
-			*num = check_int(argv[--argc]);
-			ft_lstpush(list, ft_lstnew(num));
-			elem++;
+			*num = *(int*)trav->data;
+			ft_lstappend(&new, ft_lstnew(num));
+			trav = trav->next;
 		}
+		copy_opt(start_src, new);
 	}
-	return (elem);
+	return (new);
 }

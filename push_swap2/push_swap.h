@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/28 14:15:52 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/28 14:42:48 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/29 14:45:08 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int				stack_sorted_desc(t_list *stack);
 int				dumb_sort(t_algo *algo, t_info *info);
 
 void			bubble_sort(t_algo *algo, t_info *info);
+
+t_info			*weight_sort(t_info *info);
 
 /*
 ** Set values of algo contents for each function

@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 16:14:44 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/29 15:40:06 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/30 12:06:57 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char		**ft_strsplit(char const *s, char c)
 	i = 0;
 	while (*s && *s == c)
 		s++;
-	fresh = (char**)malloc(sizeof(char**) * word_count(s, c) + 1);
+	fresh = (char**)malloc(sizeof(char*) * word_count(s, c) + 1);
 	while (*s)
 	{
 		len = 0;
@@ -50,7 +50,7 @@ char		**ft_strsplit(char const *s, char c)
 			s++;
 		while (s[len] != c && s[len] != '\0')
 			len++;
-		fresh[i] = (char*)malloc(sizeof(char) * len);
+		fresh[i] = ft_strnew(len);
 		ft_strncpy(fresh[i], s, len);
 		s = s + len;
 		i++;

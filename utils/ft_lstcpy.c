@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 13:13:39 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/30 16:51:18 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 14:42:17 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../checker/checker.h"
 
 static void	copy_opt(t_list *src, t_list *dst)
 {
@@ -40,7 +40,7 @@ t_list	*ft_lstcpy(t_list *start_src)
 		{
 			num = (int*)malloc(sizeof(int));
 			*num = *(int*)trav->data;
-			ft_lstappend(&new, ft_lstnew(num));
+			ft_lstappend(&new, ft_lstnew(trav->data));
 			trav = trav->next;
 		}
 		copy_opt(start_src, new);

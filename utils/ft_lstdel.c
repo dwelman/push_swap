@@ -6,7 +6,7 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 07:41:18 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/23 07:57:34 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/25 14:00:07 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ft_lstdel(t_list *start)
 		}
 		prev = trav;
 		trav = trav->next;
-		free(prev);
+		if (prev)
+			free(prev);
 		prev = NULL;
 	}
 }

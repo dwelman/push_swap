@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_dup.c                                        :+:      :+:    :+:   */
+/*   get_optimal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/21 08:56:50 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/30 16:49:21 by ddu-toit         ###   ########.fr       */
+/*   Created: 2016/06/23 13:21:01 by daviwel           #+#    #+#             */
+/*   Updated: 2016/06/30 16:45:50 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker_src/checker.h"
+#include "push_swap.h"
 
-void	check_dup(t_list *list)
+void	get_optimal(t_info *info, int *arr)
 {
-	t_list	*trav;
-	t_list	*cur;
+	int		i;
+	t_list	*crawl;
 
-	cur = list;
-	while (cur)
+	crawl = info->a;
+	while (crawl != NULL)
 	{
-		trav = cur->next;
-		while (trav)
+		i = 0;
+		while (i < info->max)
 		{
-			if (*(int*)trav->data == *(int*)cur->data)
-				error_print();
-			trav = trav->next;
+			if (*(int*)crawl->data == arr[i])
+				crawl->op_pos = i;
+			i++;
 		}
-		cur = cur->next;
+		crawl = crawl->next;
 	}
 }

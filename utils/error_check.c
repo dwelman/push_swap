@@ -6,11 +6,11 @@
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/20 09:41:47 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/29 15:56:18 by ddu-toit         ###   ########.fr       */
+/*   Updated: 2016/06/30 16:49:02 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker/checker.h"
+#include "../checker_src/checker.h"
 
 void			error_print(void)
 {
@@ -54,6 +54,8 @@ static int		is_numeric(char *arg)
 	int	i;
 
 	i = 0;
+	if (arg[i] == '\0')
+		return (0);
 	if (arg[i] && arg[i] == '-')
 		i++;
 	while (arg[i] != '\0')

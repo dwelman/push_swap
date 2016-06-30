@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddu-toit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/10 14:50:28 by ddu-toit          #+#    #+#             */
-/*   Updated: 2016/06/30 07:52:13 by ddu-toit         ###   ########.fr       */
+/*   Created: 2016/06/27 08:25:16 by ddu-toit          #+#    #+#             */
+/*   Updated: 2016/06/28 09:05:08 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	bubble_sort(t_algo *algo, t_info *info)
 {
-	size_t			i;
-	unsigned char	c1;
-	unsigned char	c2;
+	t_list	*cur;
 
-	i = 0;
-	c1 = (unsigned char)*s1;
-	c2 = (unsigned char)*s2;
-	while (c1 == c2 && c1 != '\0' && c1 != '\0')
+	while ((stack_sorted(algo->stack_a) == 0 || algo->elem_a < algo->max)
+			&& (algo->op_count < info->in_count))
 	{
-		i++;
-		c1 = (unsigned char)s1[i];
-		c2 = (unsigned char)s2[i];
+		cur = algo->stack_a;
+		if (cur && cur->next && ((*(int*)cur->data > *(int*)cur->next->data)
+			|| *(int*)cur->next->data))
+			sa(algo);
+		else
+			ra(algo);
 	}
-	if (c1 != c2)
-		return(c1 - c2);
-	return (0);
 }

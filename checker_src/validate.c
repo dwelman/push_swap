@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inc_elems.c                                        :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daviwel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/21 10:32:22 by daviwel           #+#    #+#             */
-/*   Updated: 2016/06/30 16:49:37 by ddu-toit         ###   ########.fr       */
+/*   Created: 2016/06/21 11:53:38 by daviwel           #+#    #+#             */
+/*   Updated: 2016/06/30 08:23:44 by ddu-toit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../checker_src/checker.h"
+#include "checker.h"
 
-void	inc_elems(t_info *info, int order)
+int	validate(t_info *info)
 {
-	if (order == 0)
+	int		i;
+	t_list	*crawl;
+
+	i = 0;
+	crawl = info->a;
+	while (crawl != NULL)
 	{
-		if (info->elem_a > 0)
-			info->elem_a--;
-		if (info->elem_b < info->max)
-			info->elem_b++;
+		if (crawl->next != NULL)
+		{
+			if (*(int *)crawl->data >= *(int *)crawl->next->data)
+			{
+				ft_printf("KO\n");
+				return (1);
+			}
+		}
+		crawl = crawl->next;
+		i++;
 	}
-	if (order == 1)
-	{
-		if (info->elem_b > 0)
-			info->elem_b--;
-		if (info->elem_a < info->max)
-			info->elem_a++;
-	}
+	if (i > info->max || info->elem_b != 0)
+		ft_printf("KO\n");
+	else
+		ft_printf("OK\n");
+	return (1);
 }
